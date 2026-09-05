@@ -1,0 +1,2 @@
+# LajsekLegal
+Repo pro LajsekLegal
