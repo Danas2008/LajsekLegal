@@ -52,8 +52,11 @@
             {% for post in posts %}
               <article class="post">
                 <time datetime="{{ post.published_at|date:'Y-m-d' }}">{{ post.published_at|date:'d. n. Y' }}</time>
-                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
+                <div>
+                  <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                  {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
+                  <a class="text-link" href="{{ post.get_absolute_url }}">Číst celý článek</a>
+                </div>
               </article>
             {% empty %}
               <p>Zatím zde nejsou žádné články.</p>
