@@ -1,0 +1,114 @@
+{% load static %}
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mediace | Lajsek Legal</title>
+    <link rel="icon" href="{% static 'img/ikon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <a class="brand" href="{% url 'home' %}"
+          ><strong>LAJSEK LEGAL</strong><span>Advokacie a mediace</span></a
+        >
+        <nav class="nav" id="site-nav">
+          <a href="{% url 'home' %}">Domů</a>
+          <a href="{% url 'about' %}">O nás</a>
+          <a href="{% url 'cooperation' %}">Jak probíhá spolupráce</a>
+          <a href="{% url 'fees' %}">Odměna</a>
+          <a href="{% url 'references' %}">Reference</a>
+          <a href="{% url 'blog_list' %}">Blog</a>
+          <a href="{% url 'contact' %}">Kontakt</a>
+        </nav>
+        <div class="header-cta">
+          <a class="phone-pill" href="tel:+420723506568">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+420 723 506 568</span>
+          </a>
+          <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Otevřít menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="wrap">
+          <h1>Mediace</h1>
+          <p>Akreditovaná mediace jako rychlejší a méně konfliktní cesta k dohodě než soudní spor.</p>
+        </div>
+      </section>
+      <section class="content">
+        <div class="wrap reading">
+          <h2>Co pro Vás zajistíme</h2>
+          <div class="fee-list">
+            <div>
+              <strong>Obchodní spory</strong>Mediace mezi obchodními partnery s cílem zachovat vzájemnou spolupráci.
+            </div>
+            <div>
+              <strong>Sousedské a majetkové spory</strong>Řešení sporů o nemovitosti, hranice pozemků nebo společné jmění.
+            </div>
+            <div>
+              <strong>Rodinné záležitosti</strong>Mediace v rámci širších rodinných a majetkových otázek.
+            </div>
+            <div>
+              <strong>Mimosoudní dohoda</strong>Sepis dohody, která je pro obě strany závazná a nahrazuje soudní rozhodnutí.
+            </div>
+          </div>
+          <p style="margin-top: 40px">
+            <a class="button" href="{% url 'contact' %}">Nezávazně konzultovat</a>
+          </p>
+        </div>
+      </section>
+    </main>
+        <footer class="footer">
+      <div class="wrap footer-grid">
+        <div class="footer-col">
+          <h3>Kontakt</h3>
+          <p>
+            Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám
+            můžete zavolat.
+          </p>
+          <ul class="footer-list">
+            <li>
+              <span>E-mail</span
+              ><a href="mailto:vlajsek@lajseklegal.cz">vlajsek@lajseklegal.cz</a>
+            </li>
+            <li>
+              <span>Telefon</span><a href="tel:+420723506568">+420 723 506 568</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Najdete nás</h3>
+          <p>Chrudimská 1418/2<br />130 00 Praha 3</p>
+          <p>Pondělí – pátek: 9:00–18:00</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datová schránka</h3>
+          <p>5yzxazh</p>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <div>
+          <strong>LAJSEK LEGAL</strong>
+          <p>Moderní kancelář, moderní prostředky</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="{% url 'home' %}">Domů</a>
+          <a href="{% url 'privacy' %}">Osobní údaje</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="{% static 'js/menu.js' %}" defer></script>
+  </body>
+</html>

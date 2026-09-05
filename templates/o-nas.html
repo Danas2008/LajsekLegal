@@ -1,0 +1,243 @@
+{% load static %}
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>O nás | Lajsek Legal</title>
+    <link rel="icon" href="{% static 'img/ikon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <a class="brand" href="{% url 'home' %}"
+          ><strong>LAJSEK LEGAL</strong><span>Advokacie a mediace</span></a
+        >
+        <nav class="nav" id="site-nav">
+          <a href="{% url 'home' %}">Domů</a
+          ><a aria-current="page" href="{% url 'about' %}">O nás</a
+          ><a href="{% url 'cooperation' %}">Jak probíhá spolupráce</a
+          ><a href="{% url 'fees' %}">Odměna</a><a href="{% url 'references' %}">Reference</a
+          ><a href="{% url 'blog_list' %}">Blog</a><a href="{% url 'contact' %}">Kontakt</a>
+        </nav>
+        <div class="header-cta">
+          <a class="phone-pill" href="tel:+420723506568">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+420 723 506 568</span>
+          </a>
+          <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Otevřít menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="wrap"><h1>O nás</h1></div>
+      </section>
+      <section class="content">
+        <div class="wrap bio">
+          <div class="image-slot">
+            <img src="{% static 'img/obrazek1.jpg' %}" alt="Vladimír Lajsek" />
+          </div>
+          <article class="reading">
+            <p>
+              Vladimír Lajsek je advokátem a mediátorem v Praze. Specializuje
+              se především na soudní spory a mediaci, právo nemovitostí,
+              právo duševního vlastnictví, ochranu osobních údajů a GDPR či
+              smluvní právo.
+            </p>
+            <h2>Zkušenosti</h2>
+            <p>
+              Dříve působil v justici (postupně na civilním, trestním a
+              exekučním úseku a jako tiskový mluvčí soudu) a jako podnikový
+              právník v přední bance. Posléze získával zkušenosti ve
+              významných advokátních kancelářích, včetně největší a
+              nejrenomovanější právní firmy HAVEL &amp; PARTNERS. Logickým
+              vyústěním bylo založení vlastní praxe LAJSEK LEGAL. V roce 2024
+              rozšířil působnost ještě o mediaci, kdy získal osvědčení v
+              akreditovaném vzdělávacím programu.
+            </p>
+            <h2>Vzdělání</h2>
+            <p>
+              Je absolventem Právnické fakulty Univerzity Karlovy (postupně
+              tituly Mgr., JUDr. a Ph.D.), kde krátce působil v rámci
+              Akademického senátu a později zde také vyučoval. Dále absolvoval
+              postgraduální studium MBA na Vysoké škole ekonomické v Praze,
+              obor Nemovitosti a jejich oceňování na Fakultě financí a
+              účetnictví, a program Projektové řízení inovací na ČVUT (Ing.).
+            </p>
+            <p>
+              V minulosti prošel studijními pobyty na Lancaster University ve
+              Spojeném království a na Technische Universität Dresden v
+              Německu. Navštěvoval též specializační studium na Institutu
+              průmyslově-právní výchovy při Úřadu průmyslového vlastnictví.
+            </p>
+            <h2>Ocenění a aktivity</h2>
+            <p>
+              V roce 2010 zvítězil v soutěži SVOČ, roku 2019 se pak umístil na
+              3. místě v soutěži IUS et SOCIETAS. V letech 2010 až 2012 byl
+              místostarostou Spolku českých právníků Všehrd a šéfredaktorem
+              odborného právního časopisu Všehrd, v němž je dodnes členem
+              redakční rady. Od roku 2020 je ve Spolku českých právníků
+              Všehrd členem Smírčího sboru. Prošel také řadou stáží, zejména
+              v Senátu PČR a v Parlamentním institutu, a byl externím
+              legislativním poradcem Ústavněprávního výboru Poslanecké
+              sněmovny Parlamentu ČR. Roku 2021 byl Sněmem České advokátní
+              komory zvolen do Kárné komise, v roce 2025 pak do Kontrolní
+              rady, kde působí dodnes.
+            </p>
+            <h2>Jazyky</h2>
+            <p>
+              Hovoří anglicky, německy, francouzsky a rusky. V případě
+              angličtiny je také překladatelem právních textů – v roce 2024
+              získal osvědčení z doplňkového studia na Právnické fakultě
+              Univerzity Karlovy.
+            </p>
+            <h2>Vybrané publikace</h2>
+            <p>Je autorem knihy Přísedící a laický prvek v justici a řady
+            odborných článků, především v prestižních časopisech Právník a
+            Právní rozhledy.</p>
+            <ul class="pub-list">
+              <li>
+                LAJSEK, V.: <em>Přísedící a laický prvek v justici.</em> Praha:
+                Leges, 2020, 182 s. ISBN 978-80-7502-459-6.
+              </li>
+              <li>
+                LAJSEK, V.: Kritické zamyšlení nad ustanovováním soudců v ČR.
+                <em>Právní rozhledy,</em> 2020, roč. 28, č. 18, str. 627–637.
+                ISSN 1210-6410.
+              </li>
+              <li>
+                LAJSEK, V.: Přísedící a zásada zákonného soudce v českém
+                právním řádu. <em>Právník,</em> 2019, roč. 158, č. 11, str.
+                1031–1045. ISSN 0231-6625.
+              </li>
+              <li>
+                LAJSEK, V.: Náležitosti předžalobní výzvy podle § 142a OSŘ.
+                <em>Právní rozhledy,</em> 2016, roč. 24, č. 13–14, str.
+                489–496. ISSN 1210-6410.
+              </li>
+              <li>
+                LAJSEK, V.: Rozdíl mezi kvalifikovanou a jednoduchou výzvou k
+                plnění. <em>Právní rádce,</em> 2016, roč. 24, č. 5, str.
+                38–40. ISSN 1210-4817.
+              </li>
+              <li>
+                LAJSEK, V.: Starší právo k autorskému dílu jako relativní
+                důvod pro odmítnutí zápisu ochranné známky.
+                <em>Právní rozhledy,</em> 2015, roč. 23, č. 7, str. 237–242.
+                ISSN 1210-6410.
+              </li>
+              <li>
+                LAJSEK, V.: Vliv Vorwissen, Vorverständnis a hunch theory na
+                rozhodování soudců. <em>Právník,</em> 2012, roč. 151, č. 6,
+                str. 586–604. ISSN 0231-6625.
+              </li>
+              <li>
+                LAJSEK, V.: Pojetí teleologické metody interpretace v českém
+                právním prostředí. <em>Právník,</em> 2011, roč. 150, č. 7,
+                str. 633–654. ISSN 0231-6625.
+              </li>
+              <li>
+                LAJSEK, V.: Die ehrenamtlichen Richter in der Tschechischen
+                Republik. <em>Deutsch-Polnische Juristen-Zeitschrift,</em>
+                2020, roč. 12, č. 1–2, str. 42–45. ISSN 1615-9063.
+              </li>
+              <li>
+                LAJSEK, V.: The Patentability of Software in the Countries of
+                the European Union. In: Šmejkal, V. et al.:
+                <em>Current EU Law in the Field of Information Technology.</em>
+                Berlin: RWW, 2016, str. 9–26. ISBN 978-3-946915-02-7.
+              </li>
+              <li>
+                LAJSEK, V.: K čemu je územní plán a co v něm prověřovat.
+                Epravo.cz, 22. 4. 2022.
+              </li>
+              <li>LAJSEK, V.: Vady nemovitých věcí. Epravo.cz, 23. 2. 2022.</li>
+              <li>
+                LAJSEK, V.: Změny v oblasti telemarketingu. Epravo.cz, 13. 1.
+                2022.
+              </li>
+              <li>
+                LAJSEK, V.: Cookies – jak budou nově fungovat? Epravo.cz, 22.
+                12. 2021.
+              </li>
+              <li>
+                LAJSEK, V.: Zakládání nízkonákladových s. r. o. Epravo.cz, 9.
+                6. 2021.
+              </li>
+              <li>
+                LAJSEK, V.: Novinky ve smlouvách o výkonu funkce. Epravo.cz,
+                29. 1. 2021.
+              </li>
+              <li>
+                LAJSEK, V.: Novinky v odpovědnosti statutárních orgánů.
+                Epravo.cz, 20. 1. 2021.
+              </li>
+              <li>
+                LAJSEK, V.: Jak justice přichází o asistenty. Jiné právo, 11.
+                8. 2019.
+              </li>
+              <li>
+                LAJSEK, V.: Kmenové buňky, patenty a ESD – „One size fits
+                all?“. Jiné právo, 16. 5. 2014.
+              </li>
+              <li>
+                LAJSEK, V.: Právo na nerušený výkon veřejné funkce. Všehrd –
+                Spolek českých právníků.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+        <footer class="footer">
+      <div class="wrap footer-grid">
+        <div class="footer-col">
+          <h3>Kontakt</h3>
+          <p>
+            Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám
+            můžete zavolat.
+          </p>
+          <ul class="footer-list">
+            <li>
+              <span>E-mail</span
+              ><a href="mailto:vlajsek@lajseklegal.cz">vlajsek@lajseklegal.cz</a>
+            </li>
+            <li>
+              <span>Telefon</span><a href="tel:+420723506568">+420 723 506 568</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Najdete nás</h3>
+          <p>Chrudimská 1418/2<br />130 00 Praha 3</p>
+          <p>Pondělí – pátek: 9:00–18:00</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datová schránka</h3>
+          <p>5yzxazh</p>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <div>
+          <strong>LAJSEK LEGAL</strong>
+          <p>Moderní kancelář, moderní prostředky</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="{% url 'home' %}">Domů</a>
+          <a href="{% url 'privacy' %}">Osobní údaje</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="{% static 'js/menu.js' %}" defer></script>
+  </body>
+</html>

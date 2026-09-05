@@ -1,0 +1,104 @@
+{% load static %}
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Osobní údaje | Lajsek Legal</title>
+    <link rel="icon" href="{% static 'img/ikon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <a class="brand" href="{% url 'home' %}"
+          ><strong>LAJSEK LEGAL</strong><span>Advokacie a mediace</span></a
+        >
+        <div class="header-cta">
+          <a class="phone-pill" href="tel:+420723506568">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+420 723 506 568</span>
+          </a>
+          <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="wrap"><h1>Osobní údaje</h1></div>
+      </section>
+      <section class="content">
+        <article class="wrap reading">
+          <h2>Ochrana osobních údajů</h2>
+          <p>
+            Správcem osobních údajů je Vladimír Lajsek, advokát, se sídlem
+            Chrudimská 1418/2, 130 00 Praha 3. Kontakt:
+            <a href="mailto:vlajsek@lajseklegal.cz">vlajsek@lajseklegal.cz</a>.
+          </p>
+          <h3>Jaké údaje a proč zpracováváme</h3>
+          <ul>
+            <li>
+              kontaktní údaje a obsah vašeho dotazu, abychom mohli odpovědět a
+              posoudit možnost spolupráce,
+            </li>
+            <li>
+              údaje nezbytné pro plnění smlouvy o poskytování právních služeb a
+              zákonných povinností advokáta,
+            </li>
+            <li>nezbytné technické údaje pro bezpečný provoz webu.</li>
+          </ul>
+          <p>
+            Údaje zpracováváme po dobu nutnou pro daný účel, případně po dobu
+            stanovenou právními předpisy. Máte právo na přístup, opravu, výmaz,
+            omezení zpracování, námitku a podání stížnosti u Úřadu pro ochranu
+            osobních údajů.
+          </p>
+          <div class="disclaimer">
+            <strong>Advokátní mlčenlivost:</strong> Informace získané při
+            poskytování právních služeb jsou chráněny zákonnou povinností
+            mlčenlivosti.
+          </div>
+        </article>
+      </section>
+    </main>
+        <footer class="footer">
+      <div class="wrap footer-grid">
+        <div class="footer-col">
+          <h3>Kontakt</h3>
+          <p>
+            Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám
+            můžete zavolat.
+          </p>
+          <ul class="footer-list">
+            <li>
+              <span>E-mail</span
+              ><a href="mailto:vlajsek@lajseklegal.cz">vlajsek@lajseklegal.cz</a>
+            </li>
+            <li>
+              <span>Telefon</span><a href="tel:+420723506568">+420 723 506 568</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Najdete nás</h3>
+          <p>Chrudimská 1418/2<br />130 00 Praha 3</p>
+          <p>Pondělí – pátek: 9:00–18:00</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datová schránka</h3>
+          <p>5yzxazh</p>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <div>
+          <strong>LAJSEK LEGAL</strong>
+          <p>Moderní kancelář, moderní prostředky</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="{% url 'home' %}">Domů</a>
+          <a href="{% url 'privacy' %}">Osobní údaje</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+{% load static %}
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Reference | Lajsek Legal</title>
+    <link rel="icon" href="{% static 'img/ikon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <a class="brand" href="{% url 'home' %}"
+          ><strong>LAJSEK LEGAL</strong><span>Advokacie a mediace</span></a
+        >
+        <nav class="nav" id="site-nav">
+          <a href="{% url 'home' %}">Domů</a><a href="{% url 'about' %}">O nás</a
+          ><a href="{% url 'cooperation' %}">Jak probíhá spolupráce</a
+          ><a href="{% url 'fees' %}">Odměna</a
+          ><a aria-current="page" href="{% url 'references' %}">Reference</a
+          ><a href="{% url 'blog_list' %}">Blog</a><a href="{% url 'contact' %}">Kontakt</a>
+        </nav>
+        <div class="header-cta">
+          <a class="phone-pill" href="tel:+420723506568">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+420 723 506 568</span>
+          </a>
+          <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Otevřít menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="wrap"><h1>Reference</h1></div>
+      </section>
+      <section class="content">
+        <div class="wrap">
+          <div class="disclaimer">
+            Podle advokátního etického kodexu je advokátům zakázáno
+            poskytovat jakékoli informace o svých klientech. Toto pravidlo
+            plně respektujeme – níže však uvádíme alespoň několik vyjádření
+            o našich službách.
+          </div>
+          <div class="quotes">
+            <blockquote>
+              <p>
+                Jako jednatel společnosti jsem měl to štěstí, že jsem mohl
+                spolupracovat s panem advokátem Vladimírem Lajskem v rámci
+                našich developerských projektů. Jeho právní poradenství bylo
+                klíčové v mnoha fázích – od financování projektů až po
+                přípravu a revizi převodní dokumentace. Pana advokáta
+                vyznačuje nejen jeho odborná erudice a hluboké znalosti v
+                oblasti realitního práva, ale také schopnost najít
+                praktická a efektivní řešení složitých situací. S plnou
+                důvěrou ho doporučuji všem, kteří hledají nejen vynikajícího
+                právníka, ale i spolehlivého partnera pro své podnikání v
+                oblasti developmentu.
+              </p>
+              <footer>
+                <span class="avatar">P</span>
+                <span class="who">
+                  <strong>Pavel</strong>
+                  <span>Podnikatel a developer</span>
+                </span>
+              </footer>
+            </blockquote>
+            <blockquote>
+              <p>
+                V pracovním i soukromém životě jsem mnoho let využívala
+                služby advokátních kanceláří. Nyní několik let preferuji
+                služby advokátní kanceláře LAJSEK LEGAL. Velice si vážím
+                precizního přístupu a péče, kterou pan doktor Lajsek věnuje
+                právním záležitostem. Na mé potřeby reaguje velmi rychle,
+                hledá nejlepší možná řešení problému, jasně a srozumitelně
+                vysvětlí a navrhne možnosti řešení. Pana doktora Lajska
+                mohu vřele doporučit.
+              </p>
+              <footer>
+                <span class="avatar">E</span>
+                <span class="who">
+                  <strong>Eva</strong>
+                  <span>Podniková právnička</span>
+                </span>
+              </footer>
+            </blockquote>
+            <blockquote>
+              <p>
+                Pan doktor Lajsek nám zachránil velkou spoustu peněz, a
+                nejspíš i celou firmu, když nám vyhrál zásadní obchodní spor.
+                Náš případ vypadal na začátku téměř beznadějně, ale pan
+                Doktor připravil obhajobu tak perfektně, že jsme spor nakonec
+                vyhráli. Velké díky!
+              </p>
+              <footer>
+                <span class="avatar">M</span>
+                <span class="who">
+                  <strong>Martin</strong>
+                  <span>Zakladatel a ředitel technologické společnosti</span>
+                </span>
+              </footer>
+            </blockquote>
+            <blockquote>
+              <p>
+                Jsem vděčný panu Lajskovi za rychlou reakci a zjevnou péči o
+                mé zájmy od samého začátku. Ta mi poskytla jistotu v době,
+                kdy jsem ji nejvíce potřeboval.
+              </p>
+              <footer>
+                <span class="avatar">K</span>
+                <span class="who">
+                  <strong>Kryštof</strong>
+                  <span>Podnikatel a zakladatel start-upu</span>
+                </span>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+    </main>
+        <footer class="footer">
+      <div class="wrap footer-grid">
+        <div class="footer-col">
+          <h3>Kontakt</h3>
+          <p>
+            Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám
+            můžete zavolat.
+          </p>
+          <ul class="footer-list">
+            <li>
+              <span>E-mail</span
+              ><a href="mailto:vlajsek@lajseklegal.cz">vlajsek@lajseklegal.cz</a>
+            </li>
+            <li>
+              <span>Telefon</span><a href="tel:+420723506568">+420 723 506 568</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Najdete nás</h3>
+          <p>Chrudimská 1418/2<br />130 00 Praha 3</p>
+          <p>Pondělí – pátek: 9:00–18:00</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datová schránka</h3>
+          <p>5yzxazh</p>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <div>
+          <strong>LAJSEK LEGAL</strong>
+          <p>Moderní kancelář, moderní prostředky</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="{% url 'home' %}">Domů</a>
+          <a href="{% url 'privacy' %}">Osobní údaje</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="{% static 'js/menu.js' %}" defer></script>
+  </body>
+</html>

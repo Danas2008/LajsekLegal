@@ -1,0 +1,262 @@
+{% load static %}
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Kontakt | Lajsek Legal</title>
+    <link rel="icon" href="{% static 'img/ikon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <a class="brand" href="{% url 'home' %}"
+          ><strong>LAJSEK LEGAL</strong><span>Advokacie a mediace</span></a
+        >
+        <nav class="nav" id="site-nav">
+          <a href="{% url 'home' %}">Domů</a><a href="{% url 'about' %}">O nás</a
+          ><a href="{% url 'cooperation' %}">Jak probíhá spolupráce</a
+          ><a href="{% url 'fees' %}">Odměna</a><a href="{% url 'references' %}">Reference</a
+          ><a href="{% url 'blog_list' %}">Blog</a
+          ><a aria-current="page" href="{% url 'contact' %}">Kontakt</a>
+        </nav>
+        <div class="header-cta">
+          <a class="phone-pill" href="tel:+420723506568">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+420 723 506 568</span>
+          </a>
+          <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Otevřít menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="wrap">
+          <h1>Kontakt</h1>
+          <p>
+            Ozvěte se nám e-mailem, telefonicky, nebo napište pár řádků přes
+            formulář níže – ozveme se zpět nejpozději následující pracovní
+            den.
+          </p>
+        </div>
+      </section>
+      <section class="content">
+        <div class="wrap contact-grid">
+          <div class="contact-card">
+            <h2>Lajsek Legal</h2>
+            <p>
+              Advokátní kancelář Vladimíra Lajska sídlí v centru Prahy 3, jen
+              pár minut od stanice metra Jiřího z Poděbrad. Konzultace
+              probíhají osobně v kanceláři, telefonicky i online.
+            </p>
+            <ul class="info-list">
+              <li>
+                <span class="info-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                    /><circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <div>
+                  <strong>Adresa</strong>
+                  <span>Chrudimská 1418/2, 130 00 Praha 3</span>
+                </div>
+              </li>
+              <li>
+                <span class="info-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" /><path
+                      d="M12 6v6l4 2"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <strong>Otevírací doba</strong>
+                  <span>Pondělí–pátek 9:00–18:00</span>
+                </div>
+              </li>
+              <li>
+                <span class="info-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16v16H4z"
+                    /><path d="m4 6 8 7 8-7" />
+                  </svg>
+                </span>
+                <div>
+                  <strong>E-mail</strong>
+                  <a href="mailto:vlajsek@lajseklegal.cz"
+                    >vlajsek@lajseklegal.cz</a
+                  >
+                </div>
+              </li>
+              <li>
+                <span class="info-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <strong>Telefon</strong>
+                  <a href="tel:+420723506568">+420 723 506 568</a>
+                </div>
+              </li>
+              <li>
+                <span class="info-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="7" width="18" height="13" rx="1" /><path
+                      d="M3 7 12 3l9 4"
+                    /><path d="M8 12h8" />
+                  </svg>
+                </span>
+                <div>
+                  <strong>Datová schránka</strong>
+                  <span>5yzxazh</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps?q=Chrudimsk%C3%A1%201418%2F2%2C%20130%2000%20Praha%203&output=embed"
+              title="Mapa – Chrudimská 1418/2, Praha 3"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+      <section class="section alt">
+        <div class="wrap">
+          <div class="form-card">
+            <h2>Napište nám</h2>
+            <p>
+              Popište stručně Váš případ – ozveme se zpět nejpozději
+              následující pracovní den.
+            </p>
+            <form
+              class="contact-form"
+              action="mailto:vlajsek@lajseklegal.cz"
+              method="post"
+              enctype="text/plain"
+            >
+              <div class="form-row">
+                <label
+                  >Jméno a příjmení
+                  <input type="text" name="jmeno" required />
+                </label>
+                <label
+                  >E-mail
+                  <input type="email" name="email" required />
+                </label>
+              </div>
+              <div class="form-row">
+                <label
+                  >Telefon
+                  <input type="tel" name="telefon" />
+                </label>
+                <label
+                  >Předmět
+                  <input type="text" name="predmet" />
+                </label>
+              </div>
+              <label
+                >Zpráva
+                <textarea name="zprava" rows="5" required></textarea>
+              </label>
+              <div>
+                <button class="button" type="submit">Odeslat zprávu</button>
+                <p class="form-note">
+                  Odesláním zprávy otevřete e-mailového klienta se
+                  předvyplněnou zprávou na vlajsek@lajseklegal.cz.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+        <footer class="footer">
+      <div class="wrap footer-grid">
+        <div class="footer-col">
+          <h3>Kontakt</h3>
+          <p>
+            Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám
+            můžete zavolat.
+          </p>
+          <ul class="footer-list">
+            <li>
+              <span>E-mail</span
+              ><a href="mailto:vlajsek@lajseklegal.cz">vlajsek@lajseklegal.cz</a>
+            </li>
+            <li>
+              <span>Telefon</span><a href="tel:+420723506568">+420 723 506 568</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Najdete nás</h3>
+          <p>Chrudimská 1418/2<br />130 00 Praha 3</p>
+          <p>Pondělí – pátek: 9:00–18:00</p>
+        </div>
+        <div class="footer-col">
+          <h3>Datová schránka</h3>
+          <p>5yzxazh</p>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <div>
+          <strong>LAJSEK LEGAL</strong>
+          <p>Moderní kancelář, moderní prostředky</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="{% url 'home' %}">Domů</a>
+          <a href="{% url 'privacy' %}">Osobní údaje</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="{% static 'js/menu.js' %}" defer></script>
+  </body>
+</html>

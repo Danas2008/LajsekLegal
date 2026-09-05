@@ -1,0 +1,23 @@
+{% load static %}<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Lajsek Legal | Advokacie a mediace{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+    <link rel="icon" href="{% static 'img/ikon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    {% block header %}
+      {% include 'partials/header.html' %}
+    {% endblock %}
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    {% include 'partials/footer.html' %}
+    {% block extra_scripts %}
+      <script src="{% static 'js/menu.js' %}" defer></script>
+    {% endblock %}
+  </body>
+</html>
