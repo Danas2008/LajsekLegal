@@ -1,4 +1,5 @@
 {% load static %}
+{% load edit_tags %}
 <!doctype html>
 <html lang="cs">
   <head>
@@ -50,58 +51,66 @@
     <main>
       <section class="page-title">
         <div class="wrap">
-          <h1>Jak probíhá spolupráce</h1>
-          <p>Moderně, efektivně a k Vaší spokojenosti!</p>
+          <h1>{% edit "cooperation_title" "Jak probíhá spolupráce" %}</h1>
+          <p>{% edit "cooperation_lead" "Moderně, efektivně a k Vaší spokojenosti!" %}</p>
         </div>
       </section>
       <section class="content">
         <div class="wrap">
+          {% editblock "cooperation_steps" %}
           <div class="steps">
             <div class="step">
-              <span>01</span>
+              <span>1</span>
               <div>
-                <h3>Úvodní konzultace</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Probereme Vaši situaci, cíle a možnosti řešení, ať už osobně,
-                  telefonicky nebo e-mailem.
+                  Neváhejte mě kontaktovat. Nejlépe e-mailem na
+                  <strong>vlajsek@lajseklegal.cz</strong>. V e-mailu popište
+                  svůj problém. Do přílohy můžete rovnou přidat i skeny
+                  podstatných dokumentů.
                 </p>
               </div>
             </div>
             <div class="step">
-              <span>02</span>
+              <span>2</span>
               <div>
-                <h3>Analýza a návrh řešení</h3>
                 <p>
-                  Sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Připravíme právní rozbor a doporučíme nejvhodnější
-                  postup včetně odhadu nákladů a časového rámce.
+                  Nejpozději <strong>do 2 dnů</strong> Vám odpovím (a
+                  případně se doptám). Můžeme se též setkat, a to buď osobně
+                  anebo online – vše dle Vašich preferencí.
                 </p>
               </div>
             </div>
             <div class="step">
-              <span>03</span>
+              <span>3</span>
               <div>
-                <h3>Realizace</h3>
                 <p>
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris. Zastupujeme Vás při jednáních, sepisujeme smlouvy a
-                  podání a průběžně Vás informujeme o postupu.
+                  Detailně prostuduji Váš problém, navrhnu nejefektivnější
+                  řešení a provedu nacenění. Vše Vám zašlu
+                  <strong>předem k posouzení</strong>.
                 </p>
               </div>
             </div>
             <div class="step">
-              <span>04</span>
+              <span>4</span>
               <div>
-                <h3>Vyhodnocení a podpora</h3>
                 <p>
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore. Po uzavření případu zůstáváme k
-                  dispozici pro další konzultace a servis.
+                  V případě Vašeho souhlasu zašlu dokumentaci pro spolupráci
+                  (smlouvu, plnou moc apod.). Pro Vás komfort postačí zaslat
+                  <strong>podepsaný sken zpět e-mailem</strong>.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <span>5</span>
+              <div>
+                <p>
+                  Začnu Váš problém aktivně řešit. Vše k Vaší
+                  <strong>maximální spokojenosti</strong>.
                 </p>
               </div>
             </div>
           </div>
+          {% endeditblock %}
         </div>
       </section>
     </main>
@@ -109,10 +118,7 @@
       <div class="wrap footer-grid">
         <div class="footer-col">
           <h3>Kontakt</h3>
-          <p>
-            Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám
-            můžete zavolat.
-          </p>
+          <p>{% edit "footer_contact_text" "Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám můžete zavolat." %}</p>
           <ul class="footer-list">
             <li>
               <span>E-mail</span
@@ -125,18 +131,18 @@
         </div>
         <div class="footer-col">
           <h3>Najdete nás</h3>
-          <p>Chrudimská 1418/2<br />130 00 Praha 3</p>
-          <p>Pondělí – pátek: 9:00–18:00</p>
+          <p>{% edit "footer_address" "Chrudimská 1418/2<br>130 00 Praha 3" %}</p>
+          <p>{% edit "footer_hours" "Pondělí – pátek: 9:00–18:00" %}</p>
         </div>
         <div class="footer-col">
           <h3>Datová schránka</h3>
-          <p>5yzxazh</p>
+          <p>{% edit "footer_databox" "5yzxazh" %}</p>
         </div>
       </div>
       <div class="wrap footer-bottom">
         <div>
           <strong>LAJSEK LEGAL</strong>
-          <p>Moderní kancelář, moderní prostředky</p>
+          <p>{% edit "footer_tagline" "Moderní kancelář, moderní prostředky" %}</p>
         </div>
         <nav class="footer-nav">
           <a href="{% url 'home' %}">Domů</a>

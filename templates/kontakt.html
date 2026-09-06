@@ -1,4 +1,5 @@
 {% load static %}
+{% load edit_tags %}
 <!doctype html>
 <html lang="cs">
   <head>
@@ -50,23 +51,15 @@
     <main>
       <section class="page-title">
         <div class="wrap">
-          <h1>Kontakt</h1>
-          <p>
-            Ozvěte se nám e-mailem, telefonicky, nebo napište pár řádků přes
-            formulář níže – ozveme se zpět nejpozději následující pracovní
-            den.
-          </p>
+          <h1>{% edit "contact_title" "Kontakt" %}</h1>
+          <p>{% edit "contact_lead" "Ozvěte se nám e-mailem, telefonicky, nebo napište pár řádků přes formulář níže – ozveme se zpět nejpozději následující pracovní den." %}</p>
         </div>
       </section>
       <section class="content">
         <div class="wrap contact-grid">
           <div class="contact-card">
-            <h2>Lajsek Legal</h2>
-            <p>
-              Advokátní kancelář Vladimíra Lajska sídlí v centru Prahy 3, jen
-              pár minut od stanice metra Jiřího z Poděbrad. Konzultace
-              probíhají osobně v kanceláři, telefonicky i online.
-            </p>
+            <h2>{% edit "contact_card_title" "Lajsek Legal" %}</h2>
+            <p>{% edit "contact_card_text" "Advokátní kancelář Vladimíra Lajska sídlí v centru Prahy 3, jen pár minut od stanice metra Jiřího z Poděbrad. Konzultace probíhají osobně v kanceláři, telefonicky i online." %}</p>
             <ul class="info-list">
               <li>
                 <span class="info-icon">
@@ -231,10 +224,7 @@
       <div class="wrap footer-grid">
         <div class="footer-col">
           <h3>Kontakt</h3>
-          <p>
-            Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám
-            můžete zavolat.
-          </p>
+          <p>{% edit "footer_contact_text" "Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám můžete zavolat." %}</p>
           <ul class="footer-list">
             <li>
               <span>E-mail</span
@@ -247,18 +237,18 @@
         </div>
         <div class="footer-col">
           <h3>Najdete nás</h3>
-          <p>Chrudimská 1418/2<br />130 00 Praha 3</p>
-          <p>Pondělí – pátek: 9:00–18:00</p>
+          <p>{% edit "footer_address" "Chrudimská 1418/2<br>130 00 Praha 3" %}</p>
+          <p>{% edit "footer_hours" "Pondělí – pátek: 9:00–18:00" %}</p>
         </div>
         <div class="footer-col">
           <h3>Datová schránka</h3>
-          <p>5yzxazh</p>
+          <p>{% edit "footer_databox" "5yzxazh" %}</p>
         </div>
       </div>
       <div class="wrap footer-bottom">
         <div>
           <strong>LAJSEK LEGAL</strong>
-          <p>Moderní kancelář, moderní prostředky</p>
+          <p>{% edit "footer_tagline" "Moderní kancelář, moderní prostředky" %}</p>
         </div>
         <nav class="footer-nav">
           <a href="{% url 'home' %}">Domů</a>

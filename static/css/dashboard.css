@@ -293,6 +293,67 @@
   outline: none;
 }
 
+.dash-field-error {
+  color: #a33;
+  font-size: 0.8rem;
+  margin: 6px 0 0;
+}
+
+.rte-wrap {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rte-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background: #f5f2ee;
+  border-bottom: 1px solid var(--line);
+}
+
+.rte-toolbar button,
+.rte-toolbar select {
+  padding: 6px 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.rte-toolbar button:hover,
+.rte-toolbar select:hover {
+  border-color: var(--wine);
+  color: var(--wine);
+}
+
+.rte-sep {
+  width: 1px;
+  height: 22px;
+  margin: 0 4px;
+  background: var(--line);
+}
+
+.rte-editor {
+  min-height: 260px;
+  padding: 14px 16px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  outline: none;
+}
+
+.rte-editor:focus {
+  background: #fffdfb;
+}
+
 .dash-form-actions {
   display: flex;
   align-items: center;

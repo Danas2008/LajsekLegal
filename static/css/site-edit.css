@@ -43,6 +43,27 @@ body.site-edit-on .editable:focus {
   background: #fff8f2;
 }
 
+.dash-inline-edit {
+  display: none;
+  margin-left: 12px;
+  padding: 4px 10px;
+  background: var(--ink);
+  color: #fff !important;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.dash-inline-edit:hover {
+  background: var(--wine);
+}
+
+body.site-edit-on .dash-inline-edit {
+  display: inline-block;
+}
+
 .site-edit-banner {
   position: fixed;
   left: 0;
