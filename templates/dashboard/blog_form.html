@@ -5,6 +5,7 @@
 {% block dash_content %}
   <div class="dash-title">
     <h1>{{ title }}</h1>
+    {% if post %}<span class="dash-badge">{{ post.get_absolute_url }}</span>{% endif %}
   </div>
 
   <div class="dash-card">
@@ -14,12 +15,13 @@
         <div class="dash-form-row">
           <label for="{{ field.id_for_label }}">{{ field.label }}</label>
           {{ field }}
+          {% if field.help_text %}<p style="color:var(--ink-soft); font-size:0.78rem; margin:6px 0 0;">{{ field.help_text }}</p>{% endif %}
           {% if field.errors %}<p style="color:#a33; font-size:0.8rem; margin:6px 0 0;">{{ field.errors|join:', ' }}</p>{% endif %}
         </div>
       {% endfor %}
-      <div style="display:flex; gap:14px;">
+      <div class="dash-form-actions">
         <button class="button" type="submit">Uložit</button>
-        <a class="text-link" href="{% url 'dashboard:blog_list' %}" style="align-self:center;">Zrušit</a>
+        <a class="text-link" href="{% url 'dashboard:blog_list' %}">Zrušit</a>
       </div>
     </form>
   </div>

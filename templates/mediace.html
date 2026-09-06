@@ -7,6 +7,7 @@
     <title>Mediace | Lajsek Legal</title>
     <link rel="icon" href="{% static 'img/ikon.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
   </head>
   <body>
     <header class="header">
@@ -29,6 +30,14 @@
             <span>+420 723 506 568</span>
           </a>
           <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+          {% if request.user.is_staff %}{% csrf_token %}
+          <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          </a>
+          <button type="button" class="icon-btn js-toggle-edit" title="Upravit text stránky" aria-label="Upravit text stránky" aria-pressed="false">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+          </button>
+          {% endif %}
           <button
             class="nav-toggle"
             aria-expanded="false"
@@ -110,5 +119,9 @@
       </div>
     </footer>
     <script src="{% static 'js/menu.js' %}" defer></script>
+    {% if request.user.is_staff %}
+      <div class="site-edit-banner">Režim úprav je zapnutý — klikněte znovu na tužku pro ukončení</div>
+      <script src="{% static 'js/site-edit.js' %}" defer></script>
+    {% endif %}
   </body>
 </html>

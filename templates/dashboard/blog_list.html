@@ -5,39 +5,40 @@
 {% block dash_content %}
   <div class="dash-title">
     <h1>Blog</h1>
-    <a class="button" href="{% url 'dashboard:blog_create' %}">Přidat článek</a>
-  </div>
-
-  <div class="dash-nav">
-    <a class="active" href="{% url 'dashboard:blog_list' %}">Blog</a>
+    <a class="button" href="{% url 'dashboard:blog_create' %}">+ Nový článek</a>
   </div>
 
   {% if posts %}
-    <table class="dash-table">
-      <thead>
-        <tr>
-          <th>Titulek</th>
-          <th>Datum</th>
-          <th>Akce</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for post in posts %}
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead>
           <tr>
-            <td>{{ post.title }}</td>
-            <td>{{ post.published_at|date:'d. n. Y' }}</td>
-            <td>
-              <div class="dash-actions">
-                <a href="{% url 'dashboard:blog_edit' post.slug %}">Upravit</a>
-                <a href="{{ post.get_absolute_url }}" target="_blank">Zobrazit</a>
-                <a class="danger" href="{% url 'dashboard:blog_delete' post.slug %}">Smazat</a>
-              </div>
-            </td>
+            <th>Titulek</th>
+            <th>Datum vydání</th>
+            <th>Akce</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+            <tr>
+              <td>{{ post.title }}</td>
+              <td>{{ post.published_at|date:'d. n. Y' }}</td>
+              <td>
+                <div class="dash-actions">
+                  <a href="{% url 'dashboard:blog_edit' post.slug %}">Upravit</a>
+                  <a href="{{ post.get_absolute_url }}" target="_blank">Zobrazit</a>
+                  <a class="danger" href="{% url 'dashboard:blog_delete' post.slug %}">Smazat</a>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   {% else %}
-    <div class="dash-empty">Zatím žádné články. Přidejte první přes tlačítko výše.</div>
+    <div class="dash-empty">
+      <p>Zatím žádné články.</p>
+      <a class="button" href="{% url 'dashboard:blog_create' %}" style="margin-top:16px; display:inline-block;">Přidat první článek</a>
+    </div>
   {% endif %}
 {% endblock %}

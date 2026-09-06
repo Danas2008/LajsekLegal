@@ -1,4 +1,5 @@
 {% load static %}
+{% load edit_tags %}
 <!doctype html>
 <html lang="cs">
   <head>
@@ -11,6 +12,7 @@
     <title>Lajsek Legal | Advokacie a mediace</title>
     <link rel="icon" href="{% static 'img/ikon.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
   </head>
   <body>
     <header class="header">
@@ -31,6 +33,14 @@
             <span>+420 723 506 568</span>
           </a>
           <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+          {% if request.user.is_staff %}{% csrf_token %}
+          <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          </a>
+          <button type="button" class="icon-btn js-toggle-edit" title="Upravit text stránky" aria-label="Upravit text stránky" aria-pressed="false">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+          </button>
+          {% endif %}
           <button
             class="nav-toggle"
             aria-expanded="false"
@@ -47,8 +57,8 @@
         <div class="wrap hero-grid">
           <div class="hero-copy">
             <div>
-              <h1>Lajsek Legal<br />Advokacie a mediace</h1>
-              <p>Moderní kancelář, moderní prostředky</p>
+              <h1>{% edit "home_hero_title" "Lajsek Legal<br />Advokacie a mediace" %}</h1>
+              <p>{% edit "home_hero_subtitle" "Moderní kancelář, moderní prostředky" %}</p>
               <a class="button" href="{% url 'contact' %}">Kontaktovat kancelář</a>
             </div>
           </div>
@@ -59,7 +69,7 @@
       </section>
       <section class="section">
         <div class="wrap">
-          <h2>Oblasti právních služeb</h2>
+          <h2>{% edit "home_services_title" "Oblasti právních služeb" %}</h2>
           <div class="services">
             <div class="service">
               <span>01</span
@@ -87,12 +97,8 @@
       <section class="section alt">
         <div class="wrap about-preview">
           <div>
-            <h2>O nás</h2>
-            <p>
-              Vladimír Lajsek je advokát a mediátor v Praze, specializace:
-              soudní spory a mediace, právo nemovitostí, duševní vlastnictví,
-              GDPR, smluvní právo.
-            </p>
+            <h2>{% edit "home_about_title" "O nás" %}</h2>
+            <p>{% edit "home_about_text" "Vladimír Lajsek je advokát a mediátor v Praze, specializace: soudní spory a mediace, právo nemovitostí, duševní vlastnictví, GDPR, smluvní právo." %}</p>
             <a class="text-link" href="{% url 'about' %}">Více o kanceláři</a>
           </div>
           <div class="image-slot">
@@ -102,14 +108,8 @@
       </section>
       <section class="section">
         <div class="wrap">
-          <h2>Reference</h2>
-          <div class="disclaimer">
-            Podle advokátního etického kodexu je advokátům zakázáno
-            poskytovat jakékoli informace o svých klientech. Toto pravidlo
-            plně respektujeme.
-            <br /><br />
-            Níže však uvádíme alespoň několik vyjádření o našich službách:
-          </div>
+          <h2>{% edit "home_references_title" "Reference" %}</h2>
+          <div class="disclaimer">{% edit "home_references_disclaimer" "Podle advokátního etického kodexu je advokátům zakázáno poskytovat jakékoli informace o svých klientech. Toto pravidlo plně respektujeme.<br><br>Níže však uvádíme alespoň několik vyjádření o našich službách:" %}</div>
           <p style="margin-top: 22px">
             <a class="text-link" href="{% url 'references' %}">Zobrazit reference</a>
           </p>
@@ -117,7 +117,7 @@
       </section>
       <section class="section alt">
         <div class="wrap">
-          <h2>Blog</h2>
+          <h2>{% edit "home_blog_title" "Blog" %}</h2>
           <div class="posts">
             <article class="post">
               <time datetime="2026-07-13">13. 7. 2026</time>
@@ -147,7 +147,7 @@
       </section>
       <section class="cta">
         <div class="wrap">
-          <h2>Potřebujete právní pomoc?</h2>
+          <h2>{% edit "home_cta_title" "Potřebujete právní pomoc?" %}</h2>
           <a class="button" href="{% url 'contact' %}">Kontakt</a>
         </div>
       </section>
@@ -192,5 +192,9 @@
       </div>
     </footer>
     <script src="{% static 'js/menu.js' %}" defer></script>
+    {% if request.user.is_staff %}
+      <div class="site-edit-banner">Režim úprav je zapnutý — klikněte znovu na tužku pro ukončení</div>
+      <script src="{% static 'js/site-edit.js' %}" defer></script>
+    {% endif %}
   </body>
 </html>
