@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'services',
     'blog',
+    'dashboard',
 ]
 
 MIDDLEWARE = [

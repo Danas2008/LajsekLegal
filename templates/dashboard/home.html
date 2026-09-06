@@ -1,0 +1,15 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Přehled{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Přehled</h1>
+  </div>
+
+  <div class="dash-nav">
+    <a href="{% url 'dashboard:blog_list' %}">Blog</a>
+  </div>
+
+  <p>Vyberte sekci výše. Zatím je dostupná pouze správa blogu.</p>
+{% endblock %}

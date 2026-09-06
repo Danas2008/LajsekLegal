@@ -1,0 +1,18 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Smazat článek{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Smazat článek</h1>
+  </div>
+
+  <div class="dash-card">
+    <p>Opravdu chcete smazat článek <strong>{{ post.title }}</strong>? Tuto akci nelze vrátit zpět.</p>
+    <form method="post" style="display:flex; gap:14px; margin-top:20px;">
+      {% csrf_token %}
+      <button class="button" type="submit" style="background:#a33;">Smazat</button>
+      <a class="text-link" href="{% url 'dashboard:blog_list' %}" style="align-self:center;">Zrušit</a>
+    </form>
+  </div>
+{% endblock %}

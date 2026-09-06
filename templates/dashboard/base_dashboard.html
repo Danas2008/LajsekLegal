@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{% block title %}Dashboard{% endblock %} | Lajsek Legal</title>
+    <link rel="icon" href="{% static 'img/ikon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+  </head>
+  <body class="dash-body">
+    <header class="dash-header">
+      <div class="wrap">
+        <strong>LAJSEK LEGAL — Dashboard</strong>
+        <div style="display:flex; gap:20px; align-items:center;">
+          <span style="font-size:0.85rem; color:#b7bcc4;">{{ request.user.username }}</span>
+          <a href="{% url 'home' %}">Zpět na web</a>
+          <form action="{% url 'admin:logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" style="background:none;border:none;color:#b7bcc4;font:inherit;font-size:0.85rem;cursor:pointer;padding:0;">Odhlásit se</button>
+          </form>
+        </div>
+      </div>
+    </header>
+    <main class="dash-main">
+      <div class="wrap">
+        {% if messages %}
+          <ul class="dash-messages">
+            {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+          </ul>
+        {% endif %}
+        {% block dash_content %}{% endblock %}
+      </div>
+    </main>
+  </body>
+</html>

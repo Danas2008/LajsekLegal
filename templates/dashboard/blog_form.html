@@ -1,0 +1,26 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <div class="dash-card">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="dash-form-row">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}<p style="color:#a33; font-size:0.8rem; margin:6px 0 0;">{{ field.errors|join:', ' }}</p>{% endif %}
+        </div>
+      {% endfor %}
+      <div style="display:flex; gap:14px;">
+        <button class="button" type="submit">Uložit</button>
+        <a class="text-link" href="{% url 'dashboard:blog_list' %}" style="align-self:center;">Zrušit</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
