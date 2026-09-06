@@ -12,7 +12,7 @@
     <a class="dash-tile" href="{% url 'dashboard:blog_list' %}">
       <div class="dash-tile-icon">✎</div>
       <h3>Blog</h3>
-      <p>{{ post_count }} článek{{ post_count|pluralize:',ů' }} — přidávejte a upravujte příspěvky.</p>
+      <p>{{ post_count }} {{ clanek_word }} — přidávejte a upravujte příspěvky.</p>
     </a>
   </div>
 {% endblock %}

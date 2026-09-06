@@ -26,10 +26,21 @@ def unique_slug(title, exclude_pk=None):
     return slug
 
 
+def clanek_word(count):
+    if count == 1:
+        return 'článek'
+    if 2 <= count <= 4:
+        return 'články'
+    return 'článků'
+
+
 @staff_member_required
 def home(request):
     post_count = BlogPost.objects.count()
-    return render(request, 'dashboard/home.html', {'post_count': post_count})
+    return render(request, 'dashboard/home.html', {
+        'post_count': post_count,
+        'clanek_word': clanek_word(post_count),
+    })
 
 
 @staff_member_required
