@@ -115,8 +115,6 @@
           <div class="disclaimer">{% edit "home_references_disclaimer" "Podle advokátního etického kodexu je advokátům zakázáno poskytovat jakékoli informace o svých klientech. Toto pravidlo plně respektujeme.<br><br>Níže však uvádíme alespoň několik vyjádření o našich službách:" %}</div>
           <p style="margin-top: 22px">
             <a class="text-link" href="{% url 'references' %}">{% t "home_references_link" "Zobrazit reference" %}</a>
-            &nbsp;·&nbsp;
-            <a class="text-link" href="{% url 'recenze' %}">{% t "home_reviews_link" "Přečíst recenze klientů" %}</a>
           </p>
         </div>
       </section>
@@ -211,7 +209,6 @@
         <nav class="footer-nav">
           <a href="{% url 'home' %}">{% t "footer_nav_home" "Domů" %}</a>
           <a href="{% url 'booking' %}">{% t "footer_nav_booking" "Rezervace" %}</a>
-          <a href="{% url 'recenze' %}">{% t "footer_nav_reviews" "Recenze" %}</a>
           <a href="{% url 'faq' %}">{% t "footer_nav_faq" "FAQ" %}</a>
           <a href="{% url 'privacy' %}">{% t "footer_nav_privacy" "Osobní údaje" %}</a>
         </nav>

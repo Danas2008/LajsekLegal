@@ -3,6 +3,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 
+from engagement.emails import send_new_review_notification
+from engagement.forms import ReviewForm
+from engagement.models import Review
+
 from .forms import ContactForm
 
 
@@ -33,7 +37,27 @@ def fees(request):
 
 
 def references(request):
-    return render(request, 'reference.html')
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save()
+            send_new_review_notification(review)
+            messages.success(request, 'Děkujeme za referenci. Bude publikována po schválení.')
+            return redirect('references')
+    else:
+        form = ReviewForm()
+
+    approved = Review.objects.filter(approved=True)
+    average = None
+    if approved.exists():
+        average = round(sum(r.rating for r in approved) / approved.count(), 1)
+
+    context = {
+        'form': form,
+        'submitted_reviews': approved,
+        'average': average,
+    }
+    return render(request, 'reference.html', context)
 
 
 def contact(request):

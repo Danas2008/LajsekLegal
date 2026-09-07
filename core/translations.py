@@ -71,8 +71,10 @@ EN = {
     # --- References page ---
     'references_title': 'References',
     'references_disclaimer': 'Under the attorney code of ethics, attorneys are prohibited from disclosing any information about their clients. We fully respect this rule – below, however, are a few words about our services.',
-    'references_reviews_prompt': 'Want to read reviews from other clients, or write your own?',
-    'references_reviews_link': 'Go to reviews',
+    'references_client_reviews_title': 'Reviews from clients',
+    'references_write_title': 'Write us a reference',
+    'references_moderation_note': 'Your reference will be published after approval.',
+    'references_submit': 'Submit reference',
 
     # --- Contact page ---
     'contact_title': 'Contact',

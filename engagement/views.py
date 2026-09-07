@@ -9,9 +9,9 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-from .emails import send_booking_confirmation, send_booking_notification, send_new_review_notification
-from .forms import BookingForm, NewsletterForm, ReviewForm
-from .models import FAQ, Booking, Review
+from .emails import send_booking_confirmation, send_booking_notification
+from .forms import BookingForm, NewsletterForm
+from .models import FAQ, Booking
 
 
 def available_slots():
@@ -90,30 +90,6 @@ def booking(request):
         'days_ahead': settings.BOOKING_DAYS_AHEAD,
     }
     return render(request, 'booking.html', context)
-
-
-def recenze(request):
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save()
-            send_new_review_notification(review)
-            messages.success(request, 'Děkujeme za recenzi. Bude publikována po schválení.')
-            return redirect('recenze')
-    else:
-        form = ReviewForm()
-
-    approved = Review.objects.filter(approved=True)
-    average = None
-    if approved.exists():
-        average = round(sum(r.rating for r in approved) / approved.count(), 1)
-
-    context = {
-        'form': form,
-        'reviews': approved,
-        'average': average,
-    }
-    return render(request, 'recenze.html', context)
 
 
 def faq(request):

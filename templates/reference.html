@@ -9,6 +9,7 @@
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}" />
   </head>
   <body>
     <header class="header">
@@ -133,10 +134,50 @@
             </blockquote>
           </div>
           {% endeditblock %}
-          <p style="margin-top: 30px">
-            {% t "references_reviews_prompt" "Chcete si přečíst i recenze od dalších klientů, nebo napsat vlastní?" %}
-            <a class="text-link" href="{% url 'recenze' %}">{% t "references_reviews_link" "Přejít na recenze" %}</a>
-          </p>
+
+          {% if submitted_reviews %}
+            <h2 style="margin-top:60px">{% t "references_client_reviews_title" "Reference od klientů" %}</h2>
+            {% if average %}
+              <p class="reviews-average">{{ average }}/5 ★ &nbsp;·&nbsp; {{ submitted_reviews|length }} {% if LANG == 'en' %}reviews{% else %}referencí{% endif %}</p>
+            {% endif %}
+            <div class="quotes" style="margin-top:20px">
+              {% for review in submitted_reviews %}
+                <blockquote>
+                  <p class="review-stars">{% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</p>
+                  <p>{{ review.text }}</p>
+                  <footer>
+                    <span class="avatar">{{ review.author|slice:':1' }}</span>
+                    <span class="who"><strong>{{ review.author }}</strong></span>
+                  </footer>
+                </blockquote>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="wrap">
+          <h2>{% t "references_write_title" "Napište nám referenci" %}</h2>
+          {% if messages %}
+            {% for message in messages %}<p class="form-note">{{ message }}</p>{% endfor %}
+          {% endif %}
+          <form class="contact-form" method="post" style="margin-top:20px;">
+            {% csrf_token %}
+            <div class="form-row">
+              <label>{% t "form_label_name" "Jméno" %}{{ form.author }}</label>
+              <label>{% t "form_label_email" "E-mail" %}{{ form.email }}</label>
+            </div>
+            <div>
+              <label style="display:block; margin-bottom:8px;">{% t "form_label_rating" "Hodnocení" %}</label>
+              <div class="review-rating-choice">{{ form.rating }}</div>
+            </div>
+            <label>{% t "form_label_review_text" "Reference" %}{{ form.text }}</label>
+            <p class="form-note">{% t "references_moderation_note" "Vaše reference bude publikována po schválení." %}</p>
+            <div>
+              <button class="button" type="submit">{% t "references_submit" "Odeslat referenci" %}</button>
+            </div>
+          </form>
         </div>
       </section>
     </main>
@@ -186,7 +227,6 @@
         <nav class="footer-nav">
           <a href="{% url 'home' %}">{% t "footer_nav_home" "Domů" %}</a>
           <a href="{% url 'booking' %}">{% t "footer_nav_booking" "Rezervace" %}</a>
-          <a href="{% url 'recenze' %}">{% t "footer_nav_reviews" "Recenze" %}</a>
           <a href="{% url 'faq' %}">{% t "footer_nav_faq" "FAQ" %}</a>
           <a href="{% url 'privacy' %}">{% t "footer_nav_privacy" "Osobní údaje" %}</a>
         </nav>

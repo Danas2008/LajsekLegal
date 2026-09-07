@@ -1,10 +1,10 @@
 {% extends 'dashboard/base_dashboard.html' %}
 
-{% block title %}Recenze{% endblock %}
+{% block title %}Reference{% endblock %}
 
 {% block dash_content %}
   <div class="dash-title">
-    <h1>Recenze</h1>
+    <h1>Reference</h1>
     {% if average %}<span class="dash-badge">★ {{ average }}/5 ({{ approved_count }})</span>{% endif %}
   </div>
 
@@ -33,7 +33,7 @@
                       {% csrf_token %}<button type="submit">Schválit</button>
                     </form>
                   {% endif %}
-                  <form method="post" action="{% url 'dashboard:review_delete' r.pk %}" onsubmit="return confirm('Smazat tuto recenzi?');">
+                  <form method="post" action="{% url 'dashboard:review_delete' r.pk %}" onsubmit="return confirm('Smazat tuto referenci?');">
                     {% csrf_token %}<button type="submit" class="danger">Smazat</button>
                   </form>
                 </div>
@@ -44,6 +44,6 @@
       </table>
     </div>
   {% else %}
-    <div class="dash-empty">Žádné recenze v této kategorii.</div>
+    <div class="dash-empty">Žádné reference v této kategorii.</div>
   {% endif %}
 {% endblock %}
