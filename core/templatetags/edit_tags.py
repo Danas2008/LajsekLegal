@@ -3,15 +3,30 @@ from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
 from core.models import TextBlock
+from core.translations import EN
 
 register = template.Library()
 
 
-@register.simple_tag
-def edit(key, default=''):
-    """Vypíše krátký editovatelný text (nadpis, jedna věta); ukládá se přes API na blur."""
+@register.simple_tag(takes_context=True)
+def t(context, key, default=''):
+    """Krátký UI text (menu, patička, tlačítka) přeložený do angličtiny podle aktuálního jazyka."""
+    if context.get('LANG') == 'en':
+        return EN.get(key, default)
+    return default
+
+
+@register.simple_tag(takes_context=True)
+def edit(context, key, default=''):
+    """Vypíše krátký editovatelný text (nadpis, jedna věta); ukládá se přes API na blur.
+    Dokud ho admin nepřepíše, v angličtině se použije překlad z core.translations."""
     stored = TextBlock.objects.filter(key=key).values_list('content', flat=True).first()
-    content = stored if stored is not None else default
+    if stored is not None:
+        content = stored
+    elif context.get('LANG') == 'en':
+        content = EN.get(key, default)
+    else:
+        content = default
     return mark_safe(f'<span class="editable" data-edit-key="{escape(key)}">{content}</span>')
 
 
@@ -22,7 +37,12 @@ class EditBlockNode(template.Node):
 
     def render(self, context):
         stored = TextBlock.objects.filter(key=self.key).values_list('content', flat=True).first()
-        content = stored if stored is not None else self.nodelist.render(context)
+        if stored is not None:
+            content = stored
+        elif context.get('LANG') == 'en':
+            content = EN.get(self.key, self.nodelist.render(context))
+        else:
+            content = self.nodelist.render(context)
         return f'<div class="editable" data-edit-key="{escape(self.key)}">{content}</div>'
 
 

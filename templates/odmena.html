@@ -1,11 +1,11 @@
 {% load static %}
 {% load edit_tags %}
 <!doctype html>
-<html lang="cs">
+<html lang="{{ LANG }}">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Odměna | Lajsek Legal</title>
+    <title>{% t "fees_title" "Odměna" %} | Lajsek Legal</title>
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
@@ -17,18 +17,24 @@
           ><strong>LAJSEK LEGAL</strong><span>Advokacie a mediace</span></a
         >
         <nav class="nav" id="site-nav">
-          <a href="{% url 'home' %}">Domů</a><a href="{% url 'about' %}">O nás</a
-          ><a href="{% url 'cooperation' %}">Jak probíhá spolupráce</a
-          ><a aria-current="page" href="{% url 'fees' %}">Odměna</a
-          ><a href="{% url 'references' %}">Reference</a><a href="{% url 'blog_list' %}">Blog</a
-          ><a href="{% url 'contact' %}">Kontakt</a>
+          <a href="{% url 'home' %}">{% t "nav_home" "Domů" %}</a>
+          <a href="{% url 'about' %}">{% t "nav_about" "O nás" %}</a>
+          <a href="{% url 'cooperation' %}">{% t "nav_cooperation" "Jak probíhá spolupráce" %}</a>
+          <a aria-current="page" href="{% url 'fees' %}">{% t "nav_fees" "Odměna" %}</a>
+          <a href="{% url 'references' %}">{% t "nav_references" "Reference" %}</a>
+          <a href="{% url 'blog_list' %}">{% t "nav_blog" "Blog" %}</a>
+          <a href="{% url 'contact' %}">{% t "nav_contact" "Kontakt" %}</a>
         </nav>
         <div class="header-cta">
           <a class="phone-pill" href="tel:+420723506568">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <span>+420 723 506 568</span>
           </a>
-          <a class="button" href="{% url 'contact' %}">Kontaktujte nás</a>
+          <a class="button" href="{% url 'contact' %}">{% t "header_cta_contact" "Kontaktujte nás" %}</a>
+          <div class="lang-switch">
+            <a href="{% url 'set_language' 'cs' %}?next={{ request.path }}"{% if LANG == 'cs' %} class="active"{% endif %}>CS</a>
+            <a href="{% url 'set_language' 'en' %}?next={{ request.path }}"{% if LANG == 'en' %} class="active"{% endif %}>EN</a>
+          </div>
           {% if request.user.is_staff %}{% csrf_token %}
           <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
             <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -85,37 +91,37 @@
         <footer class="footer">
       <div class="wrap footer-grid">
         <div class="footer-col">
-          <h3>Kontakt</h3>
+          <h3>{% t "footer_heading_contact" "Kontakt" %}</h3>
           <p>{% edit "footer_contact_text" "Nejefektivnější způsob, jak nás kontaktovat, je e-mailem, nebo nám můžete zavolat." %}</p>
           <ul class="footer-list">
             <li>
-              <span>E-mail</span
+              <span>{% t "footer_label_email" "E-mail" %}</span
               ><a href="mailto:vlajsek@lajseklegal.cz">vlajsek@lajseklegal.cz</a>
             </li>
             <li>
-              <span>Telefon</span><a href="tel:+420723506568">+420 723 506 568</a>
+              <span>{% t "footer_label_phone" "Telefon" %}</span><a href="tel:+420723506568">+420 723 506 568</a>
             </li>
           </ul>
         </div>
         <div class="footer-col">
-          <h3>Najdete nás</h3>
+          <h3>{% t "footer_heading_find_us" "Najdete nás" %}</h3>
           <p>{% edit "footer_address" "Chrudimská 1418/2<br>130 00 Praha 3" %}</p>
           <p>{% edit "footer_hours" "Pondělí – pátek: 9:00–18:00" %}</p>
         </div>
         <div class="footer-col">
-          <h3>Datová schránka</h3>
+          <h3>{% t "footer_heading_databox" "Datová schránka" %}</h3>
           <p>{% edit "footer_databox" "5yzxazh" %}</p>
         </div>
       </div>
       <div class="wrap footer-newsletter">
         <div class="newsletter-box">
           <div>
-            <h3>Odběr novinek</h3>
-            <p>Nové články a novinky přímo do e-mailu.</p>
+            <h3>{% t "newsletter_heading" "Odběr novinek" %}</h3>
+            <p>{% t "newsletter_text" "Nové články a novinky přímo do e-mailu." %}</p>
           </div>
           <form class="newsletter-form" data-newsletter-form action="{% url 'newsletter_subscribe' %}">
-            <input type="email" name="email" placeholder="Váš e-mail" required>
-            <button class="button" type="submit">Odebírat</button>
+            <input type="email" name="email" placeholder="{% t 'newsletter_placeholder' 'Váš e-mail' %}" required>
+            <button class="button" type="submit">{% t "newsletter_button" "Odebírat" %}</button>
           </form>
           <p class="newsletter-message" hidden></p>
         </div>
@@ -126,11 +132,11 @@
           <p>{% edit "footer_tagline" "Moderní kancelář, moderní prostředky" %}</p>
         </div>
         <nav class="footer-nav">
-          <a href="{% url 'home' %}">Domů</a>
-          <a href="{% url 'booking' %}">Rezervace</a>
-          <a href="{% url 'recenze' %}">Recenze</a>
-          <a href="{% url 'faq' %}">FAQ</a>
-          <a href="{% url 'privacy' %}">Osobní údaje</a>
+          <a href="{% url 'home' %}">{% t "footer_nav_home" "Domů" %}</a>
+          <a href="{% url 'booking' %}">{% t "footer_nav_booking" "Rezervace" %}</a>
+          <a href="{% url 'recenze' %}">{% t "footer_nav_reviews" "Recenze" %}</a>
+          <a href="{% url 'faq' %}">{% t "footer_nav_faq" "FAQ" %}</a>
+          <a href="{% url 'privacy' %}">{% t "footer_nav_privacy" "Osobní údaje" %}</a>
         </nav>
       </div>
     </footer>

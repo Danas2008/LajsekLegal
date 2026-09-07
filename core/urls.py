@@ -10,4 +10,5 @@ urlpatterns = [
     path('reference/', views.references, name='references'),
     path('kontakt/', views.contact, name='contact'),
     path('osobni-udaje/', views.privacy, name='privacy'),
+    path('jazyk/<str:lang>/', views.set_language, name='set_language'),
 ]
