@@ -571,6 +571,7 @@ blockquote footer span {
 
 .teaser-icon {
   display: flex;
+  flex: none;
   align-items: center;
   justify-content: center;
   width: 46px;
@@ -578,6 +579,7 @@ blockquote footer span {
   margin-bottom: 18px;
   background: #f1ece8;
   border-radius: 10px;
+  color: var(--wine);
   font-size: 1.3rem;
 }
 
@@ -589,6 +591,13 @@ blockquote footer span {
 .teaser-card p {
   margin: 0 0 16px;
   color: var(--ink-soft);
+}
+
+.teaser-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
 }
 
 .lang-switch {

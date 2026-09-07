@@ -121,13 +121,17 @@
       <section class="section alt">
         <div class="wrap teaser-grid">
           <a class="teaser-card" href="{% url 'booking' %}">
-            <span class="teaser-icon">📅</span>
+            <span class="teaser-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+            </span>
             <h3>{% t "home_booking_title" "Rezervujte si schůzku online" %}</h3>
             <p>{% t "home_booking_text" "Vyberte si volný termín z kalendáře a domluvte si konzultaci během chvilky." %}</p>
             <span class="text-link">{% t "home_booking_link" "Přejít na rezervaci" %} →</span>
           </a>
           <a class="teaser-card" href="{% url 'faq' %}">
-            <span class="teaser-icon">?</span>
+            <span class="teaser-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            </span>
             <h3>{% t "home_faq_title" "Časté otázky" %}</h3>
             <p>{% t "home_faq_text" "Odpovědi na nejčastější dotazy o spolupráci, cenách a právních službách." %}</p>
             <span class="text-link">{% t "home_faq_link" "Zobrazit FAQ" %} →</span>
