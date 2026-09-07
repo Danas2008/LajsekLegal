@@ -4,11 +4,34 @@
 <html lang="{{ LANG }}">
   <head>
     <meta charset="utf-8" />
+{% if GA_MEASUREMENT_ID %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ GA_MEASUREMENT_ID }}');
+    </script>
+    {% endif %}
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{{ post.title }} | Lajsek Legal</title>
+    <meta name="description" content="{{ post.excerpt|default:post.body|striptags|truncatechars:155 }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Lajsek Legal" />
+    <meta property="og:locale" content="{% if LANG == 'en' %}en_US{% else %}cs_CZ{% endif %}" />
+    <meta property="og:title" content="{{ post.title }}" />
+    <meta property="og:description" content="{{ post.excerpt|default:post.body|striptags|truncatechars:155 }}" />
+    <meta property="og:image" content="{{ SITE_URL }}{% static 'img/obrazek1.jpg' %}" />
+    <meta property="og:url" content="{{ CANONICAL_URL }}" />
+    <meta property="article:published_time" content="{{ post.published_at|date:'c' }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ post.title }}" />
+    <meta name="twitter:description" content="{{ post.excerpt|default:post.body|striptags|truncatechars:155 }}" />
+    <link rel="canonical" href="{{ CANONICAL_URL }}" />
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
+    <script type="application/ld+json">{{ post_schema|safe }}</script>
   </head>
   <body>
     <header class="header">

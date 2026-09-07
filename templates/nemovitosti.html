@@ -4,11 +4,34 @@
 <html lang="{{ LANG }}">
   <head>
     <meta charset="utf-8" />
+{% if GA_MEASUREMENT_ID %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ GA_MEASUREMENT_ID }}');
+    </script>
+    {% endif %}
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{% t "nemovitosti_title" "Nemovitosti" %} | Lajsek Legal</title>
+    <meta name="description" content="{% t 'meta_desc_nemovitosti' 'Kompletní právní servis ke koupi, prodeji i nájmu nemovitostí v Praze – smlouvy, katastr nemovitostí, věcná břemena. Konzultace zdarma.' %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lajsek Legal" />
+    <meta property="og:locale" content="{% if LANG == 'en' %}en_US{% else %}cs_CZ{% endif %}" />
+    <meta property="og:title" content="{% t 'meta_title_nemovitosti' 'Právní služby pro nemovitosti Praha | Lajsek Legal' %}" />
+    <meta property="og:description" content="{% t 'meta_desc_nemovitosti' 'Kompletní právní servis ke koupi, prodeji i nájmu nemovitostí v Praze – smlouvy, katastr nemovitostí, věcná břemena. Konzultace zdarma.' %}" />
+    <meta property="og:image" content="{{ SITE_URL }}{% static 'img/obrazek1.jpg' %}" />
+    <meta property="og:url" content="{{ CANONICAL_URL }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% t 'meta_title_nemovitosti' 'Právní služby pro nemovitosti Praha | Lajsek Legal' %}" />
+    <meta name="twitter:description" content="{% t 'meta_desc_nemovitosti' 'Kompletní právní servis ke koupi, prodeji i nájmu nemovitostí v Praze – smlouvy, katastr nemovitostí, věcná břemena. Konzultace zdarma.' %}" />
+    <link rel="canonical" href="{{ CANONICAL_URL }}" />
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
+
+    <script type="application/ld+json">{{ breadcrumb_schema|safe }}</script>
   </head>
   <body>
     <header class="header">

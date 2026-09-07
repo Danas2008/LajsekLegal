@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,10 +21,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6z80#d2rbagq!_7b7c^&_gh=n3q)@6)_e$ois8+fa7(e11q9xj'
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-6z80#d2rbagq!_7b7c^&_gh=n3q)@6)_e$ois8+fa7(e11q9xj',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Na produkci NASTAVTE env proměnnou DJANGO_DEBUG=False (např. v systemd unit
+# souboru přidejte řádek "Environment=DJANGO_DEBUG=False"), jinak Django
+# zobrazuje citlivé ladicí stránky místo custom 404 a prozrazuje strukturu kódu.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+
+# Absolutní URL webu — používá se pro Open Graph tagy, sitemap.xml a JSON-LD.
+SITE_URL = os.environ.get('SITE_URL', 'https://lajseklegal.cz')
+
+# Google Analytics 4 — nastavte GA_MEASUREMENT_ID (např. "G-XXXXXXXXXX") až
+# založíte property v Google Analytics. Dokud je prázdné, snippet se nevykreslí.
+GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', '')
 
 ALLOWED_HOSTS = [
     'lajseklegal.cz',
@@ -43,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'core',
     'services',
     'blog',
@@ -74,6 +89,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.language',
+                'core.context_processors.site',
             ],
         },
     },

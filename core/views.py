@@ -8,6 +8,7 @@ from engagement.forms import ReviewForm
 from engagement.models import Review
 
 from .forms import ContactForm
+from .seo import ld_json
 
 
 def set_language(request, lang):
@@ -49,13 +50,25 @@ def references(request):
 
     approved = Review.objects.filter(approved=True)
     average = None
+    review_schema = None
     if approved.exists():
         average = round(sum(r.rating for r in approved) / approved.count(), 1)
+        review_schema = ld_json({
+            '@context': 'https://schema.org',
+            '@type': 'LegalService',
+            'name': 'Lajsek Legal',
+            'aggregateRating': {
+                '@type': 'AggregateRating',
+                'ratingValue': average,
+                'reviewCount': approved.count(),
+            },
+        })
 
     context = {
         'form': form,
         'submitted_reviews': approved,
         'average': average,
+        'review_schema': review_schema,
     }
     return render(request, 'reference.html', context)
 
@@ -75,3 +88,7 @@ def contact(request):
 
 def privacy(request):
     return render(request, 'legal.html')
+
+
+def robots_txt(request):
+    return render(request, 'robots.txt', content_type='text/plain')

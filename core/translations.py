@@ -163,6 +163,59 @@ EN = {
     # --- Language switcher ---
     'lang_switch_label': 'Language',
 
+    # --- 404 ---
+    'error_404_title': 'Page not found',
+    'error_404_text': "The page you're looking for doesn't exist or has moved. Try one of the links below.",
+
+    # --- SEO meta tags: title (<title>/og:title/twitter:title) + description ---
+    'meta_title_home': 'Attorney & Mediator in Prague | Lajsek Legal',
+    'meta_desc_home': 'Law office of Vladimír Lajsek in Prague – litigation, mediation, real estate, contracts, GDPR. Book a free consultation today.',
+
+    'meta_title_about': 'About Attorney Vladimír Lajsek | Lajsek Legal Prague',
+    'meta_desc_about': 'Vladimír Lajsek, attorney and mediator in Prague with extensive experience in the judiciary and top law firms. Learn about his background.',
+
+    'meta_title_cooperation': 'How We Work Together | Lajsek Legal Prague',
+    'meta_desc_cooperation': 'See how easy and fast it is to work with Lajsek Legal in Prague – from first contact to resolving your case.',
+
+    'meta_title_fees': 'Attorney Fees & Pricing | Lajsek Legal Prague',
+    'meta_desc_fees': 'Clear information about legal service fees at Lajsek Legal in Prague. Find out how much a consultation or representation costs.',
+
+    'meta_title_references': 'Client References & Reviews | Lajsek Legal Prague',
+    'meta_desc_references': 'Read references and experiences from clients of Lajsek Legal in Prague. Share your own review after working with us.',
+
+    'meta_title_contact': 'Contact | Lajsek Legal Attorney Prague',
+    'meta_desc_contact': 'Contact Lajsek Legal in Prague – phone, e-mail, address, and contact form. We reply by the next business day at the latest.',
+
+    'meta_title_privacy': 'Privacy Policy | Lajsek Legal',
+    'meta_desc_privacy': 'Information on how Lajsek Legal processes personal data of website visitors and clients.',
+
+    'meta_title_spory_a_mediace': 'Litigation & Mediation in Prague | Lajsek Legal',
+    'meta_desc_spory_a_mediace': 'Representation in civil and commercial disputes plus out-of-court mediation. Attorney Vladimír Lajsek helps you find the best solution.',
+
+    'meta_title_nemovitosti': 'Real Estate Law Prague | Lajsek Legal',
+    'meta_desc_nemovitosti': 'Full legal service for buying, selling, and leasing real estate in Prague – contracts, land registry, easements. Free consultation.',
+
+    'meta_title_smlouvy': 'Contract Drafting & Review Prague | Lajsek Legal',
+    'meta_desc_smlouvy': 'Drafting, reviewing, and enforcing business and civil contracts by a Prague law office. Protect your interests with a contract expert.',
+
+    'meta_title_dusevni_vlastnictvi': 'Intellectual Property Law Prague | Lajsek Legal',
+    'meta_desc_dusevni_vlastnictvi': 'Protection of trademarks, copyright, and know-how in Prague. An IP attorney to help defend your ideas and brand.',
+
+    'meta_title_gdpr': 'GDPR Compliance for Businesses Prague | Lajsek Legal',
+    'meta_desc_gdpr': 'GDPR-compliant personal data processing setup for businesses and e-shops in Prague. Policies, processor agreements, incident handling.',
+
+    'meta_title_mediace': 'Mediation Services Prague | Lajsek Legal',
+    'meta_desc_mediace': 'Accredited mediation in Prague – a faster, cheaper way to reach agreement than going to court. Resolve disputes amicably.',
+
+    'meta_title_blog': 'Legal Blog | Lajsek Legal Prague',
+    'meta_desc_blog': 'Practical legal advice, law updates, and tips from attorney Vladimír Lajsek. Read about contracts, GDPR, disputes, and real estate.',
+
+    'meta_title_booking': 'Book a Consultation Online | Lajsek Legal Prague',
+    'meta_desc_booking': 'Book an online consultation with attorney Vladimír Lajsek in Prague. Pick a free slot from the calendar and schedule in a few clicks.',
+
+    'meta_title_faq': 'FAQ – Legal Services Prague | Lajsek Legal',
+    'meta_desc_faq': 'Answers to the most common questions about working with us, pricing, and legal services at Lajsek Legal in Prague.',
+
     # --- Shared footer content blocks (editblock defaults) ---
     'footer_contact_text': 'The most effective way to reach us is by e-mail, or you can give us a call.',
     'footer_address': '2 Chrudimská 1418, 130 00 Prague 3',

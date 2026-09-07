@@ -1,0 +1,51 @@
+{% load static %}
+{% load edit_tags %}
+<!doctype html>
+<html lang="{{ LANG }}">
+  <head>
+    <meta charset="utf-8" />
+{% if GA_MEASUREMENT_ID %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ GA_MEASUREMENT_ID }}');
+    </script>
+    {% endif %}
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{% t "error_404_title" "Stránka nenalezena" %} | Lajsek Legal</title>
+    <link rel="icon" href="{% static 'img/ikona.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <a class="brand" href="{% url 'home' %}"
+          ><strong>LAJSEK LEGAL</strong><span>Advokacie a mediace</span></a
+        >
+      </div>
+    </header>
+    <main>
+      <section class="page-title">
+        <div class="wrap">
+          <h1>404 — {% t "error_404_title" "Stránka nenalezena" %}</h1>
+          <p>{% t "error_404_text" "Stránka, kterou hledáte, neexistuje nebo byla přesunuta. Zkuste některý z odkazů níže." %}</p>
+        </div>
+      </section>
+      <section class="content">
+        <div class="wrap">
+          <div class="services">
+            <div class="service"><span>01</span><a href="{% url 'home' %}">{% t "nav_home" "Domů" %}</a></div>
+            <div class="service"><span>02</span><a href="{% url 'about' %}">{% t "nav_about" "O nás" %}</a></div>
+            <div class="service"><span>03</span><a href="{% url 'blog_list' %}">{% t "nav_blog" "Blog" %}</a></div>
+            <div class="service"><span>04</span><a href="{% url 'faq' %}">{% t "faq_title" "Časté otázky" %}</a></div>
+            <div class="service"><span>05</span><a href="{% url 'booking' %}">{% t "booking_title" "Rezervace schůzky" %}</a></div>
+            <div class="service"><span>06</span><a href="{% url 'contact' %}">{% t "nav_contact" "Kontakt" %}</a></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

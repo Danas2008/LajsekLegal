@@ -4,15 +4,70 @@
 <html lang="{{ LANG }}">
   <head>
     <meta charset="utf-8" />
+{% if GA_MEASUREMENT_ID %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ GA_MEASUREMENT_ID }}');
+    </script>
+    {% endif %}
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta
-      name="description"
-      content="{% if LANG == 'en' %}Lajsek Legal – law and mediation in Prague.{% else %}Lajsek Legal – advokacie a mediace v Praze.{% endif %}"
-    />
     <title>{% if LANG == 'en' %}Lajsek Legal | Law &amp; Mediation{% else %}Lajsek Legal | Advokacie a mediace{% endif %}</title>
+    <meta name="description" content="{% t 'meta_desc_home' 'Advokátní kancelář Vladimíra Lajska v Praze – soudní spory, mediace, nemovitosti, smlouvy, GDPR. Rezervujte si nezávaznou konzultaci ještě dnes.' %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lajsek Legal" />
+    <meta property="og:locale" content="{% if LANG == 'en' %}en_US{% else %}cs_CZ{% endif %}" />
+    <meta property="og:title" content="{% t 'meta_title_home' 'Advokátní kancelář a mediace v Praze | Lajsek Legal' %}" />
+    <meta property="og:description" content="{% t 'meta_desc_home' 'Advokátní kancelář Vladimíra Lajska v Praze – soudní spory, mediace, nemovitosti, smlouvy, GDPR. Rezervujte si nezávaznou konzultaci ještě dnes.' %}" />
+    <meta property="og:image" content="{{ SITE_URL }}{% static 'img/obrazek1.jpg' %}" />
+    <meta property="og:url" content="{{ CANONICAL_URL }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% t 'meta_title_home' 'Advokátní kancelář a mediace v Praze | Lajsek Legal' %}" />
+    <meta name="twitter:description" content="{% t 'meta_desc_home' 'Advokátní kancelář Vladimíra Lajska v Praze – soudní spory, mediace, nemovitosti, smlouvy, GDPR. Rezervujte si nezávaznou konzultaci ještě dnes.' %}" />
+    <link rel="canonical" href="{{ CANONICAL_URL }}" />
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "Lajsek Legal",
+      "image": "{{ SITE_URL }}{% static 'img/obrazek1.jpg' %}",
+      "url": "{{ SITE_URL }}/",
+      "telephone": "+420723506568",
+      "email": "vlajsek@lajseklegal.cz",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Chrudimská 1418/2",
+        "addressLocality": "Praha",
+        "postalCode": "130 00",
+        "addressCountry": "CZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 50.0777,
+        "longitude": 14.4587
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Praha"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Vladimír Lajsek"
+      }
+    }
+    </script>
   </head>
   <body>
     <header class="header">
@@ -66,7 +121,7 @@
             </div>
           </div>
           <div class="image-slot">
-            <img src="{% static 'img/obrazek1.jpg' %}" alt="Vladimír Lajsek, advokát" />
+            <img src="{% static 'img/obrazek1.jpg' %}" alt="Vladimír Lajsek, advokát a mediátor v Praze" fetchpriority="high" />
           </div>
         </div>
       </section>
@@ -105,7 +160,7 @@
             <a class="text-link" href="{% url 'about' %}">{% t "home_about_link" "Více o nás" %}</a>
           </div>
           <div class="image-slot">
-            <img src="{% static 'img/obrazek2.jpg' %}" alt="Kancelář Lajsek Legal" />
+            <img src="{% static 'img/obrazek2.jpg' %}" alt="Kancelář Lajsek Legal v Praze na Chrudimské ulici" loading="lazy" />
           </div>
         </div>
       </section>

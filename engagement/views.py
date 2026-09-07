@@ -9,6 +9,8 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
+from core.seo import ld_json
+
 from .emails import send_booking_confirmation, send_booking_notification
 from .forms import BookingForm, NewsletterForm
 from .models import FAQ, Booking
@@ -93,7 +95,23 @@ def booking(request):
 
 
 def faq(request):
-    context = {'faqs': FAQ.objects.filter(active=True)}
+    faqs = FAQ.objects.filter(active=True)
+    faq_schema = None
+    if faqs:
+        faq_schema = ld_json({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            'mainEntity': [
+                {
+                    '@type': 'Question',
+                    'name': item.question,
+                    'acceptedAnswer': {'@type': 'Answer', 'text': item.answer},
+                }
+                for item in faqs
+            ],
+        })
+
+    context = {'faqs': faqs, 'faq_schema': faq_schema}
     return render(request, 'faq.html', context)
 
 
