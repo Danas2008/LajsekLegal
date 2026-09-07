@@ -1,0 +1,52 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Schůzky{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Schůzky</h1>
+  </div>
+
+  <div class="dash-filters">
+    <a href="?filter=upcoming" class="{% if status_filter == 'upcoming' %}active{% endif %}">Nadcházející</a>
+    <a href="?filter=pending" class="{% if status_filter == 'pending' %}active{% endif %}">Čekající</a>
+    <a href="?filter=past" class="{% if status_filter == 'past' %}active{% endif %}">Minulé</a>
+  </div>
+
+  {% if bookings %}
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead>
+          <tr><th>Datum</th><th>Čas</th><th>Klient</th><th>Kontakt</th><th>Status</th><th>Akce</th></tr>
+        </thead>
+        <tbody>
+          {% for b in bookings %}
+            <tr>
+              <td>{{ b.datetime|date:'d. n. Y' }}</td>
+              <td>{{ b.datetime|date:'H:i' }}</td>
+              <td>{{ b.client_name }}</td>
+              <td>{{ b.email }}<br>{{ b.phone }}</td>
+              <td>{{ b.get_status_display }}</td>
+              <td>
+                <div class="dash-actions">
+                  {% if b.status != 'confirmed' %}
+                    <form method="post" action="{% url 'dashboard:booking_confirm' b.pk %}">
+                      {% csrf_token %}<button type="submit">Potvrdit</button>
+                    </form>
+                  {% endif %}
+                  {% if b.status != 'cancelled' %}
+                    <form method="post" action="{% url 'dashboard:booking_cancel' b.pk %}">
+                      {% csrf_token %}<button type="submit" class="danger">Zrušit</button>
+                    </form>
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="dash-empty">Žádné schůzky v této kategorii.</div>
+  {% endif %}
+{% endblock %}

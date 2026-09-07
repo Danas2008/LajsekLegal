@@ -1,0 +1,34 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Newsletter{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Newsletter</h1>
+    <div class="dash-actions">
+      <a class="button" href="{% url 'dashboard:newsletter_export' %}">Export CSV</a>
+      <button type="button" class="button" disabled title="Bude povoleno po nastavení SMTP" style="opacity:0.5; cursor:not-allowed;">Odeslat</button>
+    </div>
+  </div>
+
+  <p class="dash-badge" style="margin-bottom:20px;">{{ active_count }} aktivních odběratelů</p>
+
+  {% if subscribers %}
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead><tr><th>E-mail</th><th>Přihlášen</th><th>Aktivní</th></tr></thead>
+        <tbody>
+          {% for s in subscribers %}
+            <tr>
+              <td>{{ s.email }}</td>
+              <td>{{ s.subscribed_at|date:'d. n. Y H:i' }}</td>
+              <td>{% if s.active %}Ano{% else %}Ne{% endif %}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="dash-empty">Zatím žádní odběratelé.</div>
+  {% endif %}
+{% endblock %}

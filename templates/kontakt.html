@@ -178,42 +178,22 @@
               Popište stručně Váš případ – ozveme se zpět nejpozději
               následující pracovní den.
             </p>
-            <form
-              class="contact-form"
-              action="mailto:vlajsek@lajseklegal.cz"
-              method="post"
-              enctype="text/plain"
-            >
+            {% if messages %}
+              {% for message in messages %}<p class="form-note">{{ message }}</p>{% endfor %}
+            {% endif %}
+            <form class="contact-form" method="post">
+              {% csrf_token %}
               <div class="form-row">
-                <label
-                  >Jméno a příjmení
-                  <input type="text" name="jmeno" required />
-                </label>
-                <label
-                  >E-mail
-                  <input type="email" name="email" required />
-                </label>
+                <label>{{ form.name.label }}{{ form.name }}</label>
+                <label>{{ form.email.label }}{{ form.email }}</label>
               </div>
               <div class="form-row">
-                <label
-                  >Telefon
-                  <input type="tel" name="telefon" />
-                </label>
-                <label
-                  >Předmět
-                  <input type="text" name="predmet" />
-                </label>
+                <label>{{ form.phone.label }}{{ form.phone }}</label>
+                <label>{{ form.subject.label }}{{ form.subject }}</label>
               </div>
-              <label
-                >Zpráva
-                <textarea name="zprava" rows="5" required></textarea>
-              </label>
+              <label>{{ form.message.label }}{{ form.message }}</label>
               <div>
                 <button class="button" type="submit">Odeslat zprávu</button>
-                <p class="form-note">
-                  Odesláním zprávy otevřete e-mailového klienta se
-                  předvyplněnou zprávou na vlajsek@lajseklegal.cz.
-                </p>
               </div>
             </form>
           </div>
@@ -245,6 +225,19 @@
           <p>{% edit "footer_databox" "5yzxazh" %}</p>
         </div>
       </div>
+      <div class="wrap footer-newsletter">
+        <div class="newsletter-box">
+          <div>
+            <h3>Odběr novinek</h3>
+            <p>Nové články a novinky přímo do e-mailu.</p>
+          </div>
+          <form class="newsletter-form" data-newsletter-form action="{% url 'newsletter_subscribe' %}">
+            <input type="email" name="email" placeholder="Váš e-mail" required>
+            <button class="button" type="submit">Odebírat</button>
+          </form>
+          <p class="newsletter-message" hidden></p>
+        </div>
+      </div>
       <div class="wrap footer-bottom">
         <div>
           <strong>LAJSEK LEGAL</strong>
@@ -252,11 +245,15 @@
         </div>
         <nav class="footer-nav">
           <a href="{% url 'home' %}">Domů</a>
+          <a href="{% url 'booking' %}">Rezervace</a>
+          <a href="{% url 'recenze' %}">Recenze</a>
+          <a href="{% url 'faq' %}">FAQ</a>
           <a href="{% url 'privacy' %}">Osobní údaje</a>
         </nav>
       </div>
     </footer>
     <script src="{% static 'js/menu.js' %}" defer></script>
+    <script src="{% static 'js/newsletter.js' %}" defer></script>
     {% if request.user.is_staff %}
       <div class="site-edit-banner">Režim úprav je zapnutý — klikněte znovu na tužku pro ukončení</div>
       <script src="{% static 'js/site-edit.js' %}" defer></script>

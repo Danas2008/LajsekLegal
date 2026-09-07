@@ -542,6 +542,64 @@ blockquote footer span {
   max-width: var(--reading-width);
 }
 
+.footer-newsletter {
+  padding-top: 24px;
+  border-top: 1px solid #263041;
+}
+
+.newsletter-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.newsletter-box h3 {
+  margin: 0 0 4px;
+  color: #fff;
+  font: 500 1rem var(--serif);
+}
+
+.newsletter-box p {
+  margin: 0;
+  color: #7c828b;
+  font-size: 0.82rem;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+}
+
+.newsletter-form input {
+  padding: 10px 14px;
+  border: 1px solid #2a3342;
+  background: #1a2332;
+  color: #fff;
+  font: inherit;
+  font-size: 0.85rem;
+  min-width: 220px;
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  border-color: var(--wine);
+}
+
+.newsletter-form .button {
+  padding: 10px 18px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.newsletter-message {
+  margin: 0;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 .reading h2 {
   margin: 51px 0 15px;
   font-size: 2rem;

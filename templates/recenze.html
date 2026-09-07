@@ -5,10 +5,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mediace | Lajsek Legal</title>
+    <title>Recenze | Lajsek Legal</title>
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}" />
   </head>
   <body>
     <header class="header">
@@ -35,9 +36,6 @@
           <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
             <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
           </a>
-          <button type="button" class="icon-btn js-toggle-edit" title="Upravit text stránky" aria-label="Upravit text stránky" aria-pressed="false">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
-          </button>
           {% endif %}
           <button
             class="nav-toggle"
@@ -53,32 +51,52 @@
     <main>
       <section class="page-title">
         <div class="wrap">
-          <h1>{% edit "mediace_title" "Mediace" %}</h1>
-          <p>{% edit "mediace_lead" "Akreditovaná mediace jako rychlejší a méně konfliktní cesta k dohodě než soudní spor." %}</p>
+          <h1>Recenze</h1>
+          {% if average %}
+            <p class="reviews-average">{{ average }}/5 ★ &nbsp;·&nbsp; {{ reviews|length }} recenzí</p>
+          {% endif %}
         </div>
       </section>
+
       <section class="content">
-        <div class="wrap reading">
-          {% editblock "mediace_features" %}
-          <h2>Co pro Vás zajistíme</h2>
-          <div class="fee-list">
-            <div>
-              <strong>Obchodní spory</strong>Mediace mezi obchodními partnery s cílem zachovat vzájemnou spolupráci.
+        <div class="wrap quotes">
+          {% for review in reviews %}
+            <blockquote>
+              <p class="review-stars">{% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</p>
+              <p>{{ review.text }}</p>
+              <footer>
+                <span class="avatar">{{ review.author|slice:':1' }}</span>
+                <span class="who"><strong>{{ review.author }}</strong></span>
+              </footer>
+            </blockquote>
+          {% empty %}
+            <p>Zatím zde nejsou žádné recenze.</p>
+          {% endfor %}
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="wrap">
+          <h2>Napsat recenzi</h2>
+          {% if messages %}
+            {% for message in messages %}<p class="form-note">{{ message }}</p>{% endfor %}
+          {% endif %}
+          <form class="contact-form" method="post" style="margin-top:20px;">
+            {% csrf_token %}
+            <div class="form-row">
+              <label>{{ form.author.label }}{{ form.author }}</label>
+              <label>{{ form.email.label }}{{ form.email }}</label>
             </div>
             <div>
-              <strong>Sousedské a majetkové spory</strong>Řešení sporů o nemovitosti, hranice pozemků nebo společné jmění.
+              <label style="display:block; margin-bottom:8px;">{{ form.rating.label }}</label>
+              <div class="review-rating-choice">{{ form.rating }}</div>
             </div>
+            <label>{{ form.text.label }}{{ form.text }}</label>
+            <p class="form-note">Vaše recenze bude publikována po schválení.</p>
             <div>
-              <strong>Rodinné záležitosti</strong>Mediace v rámci širších rodinných a majetkových otázek.
+              <button class="button" type="submit">Odeslat recenzi</button>
             </div>
-            <div>
-              <strong>Mimosoudní dohoda</strong>Sepis dohody, která je pro obě strany závazná a nahrazuje soudní rozhodnutí.
-            </div>
-          </div>
-          {% endeditblock %}
-          <p style="margin-top: 40px">
-            <a class="button" href="{% url 'contact' %}">Nezávazně konzultovat</a>
-          </p>
+          </form>
         </div>
       </section>
     </main>

@@ -8,6 +8,7 @@ class BlogPost(models.Model):
     published_at = models.DateField()
     excerpt = models.TextField(blank=True)
     body = models.TextField(blank=True)
+    views = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ['-published_at']

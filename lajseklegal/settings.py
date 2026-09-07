@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'services',
     'blog',
     'dashboard',
+    'engagement',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,15 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# E-mail — dokud nemáme SMTP heslo od Vladimíra, e-maily se jen vypisují do konzole.
+# Až heslo bude k dispozici, přepnout EMAIL_BACKEND na 'django.core.mail.backends.smtp.EmailBackend'
+# a doplnit EMAIL_HOST / EMAIL_HOST_USER / EMAIL_HOST_PASSWORD / EMAIL_PORT / EMAIL_USE_TLS.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@lajseklegal.cz'
+ADMIN_NOTIFICATION_EMAIL = 'vlajsek@lajseklegal.cz'
+
+# Rezervační systém — dostupné dny (0=pondělí) a hodiny schůzek.
+BOOKING_WEEKDAYS = [0, 1, 2, 3, 4]
+BOOKING_HOURS = [9, 10, 11, 13, 14, 15, 16]
+BOOKING_DAYS_AHEAD = 21

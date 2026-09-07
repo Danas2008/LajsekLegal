@@ -8,6 +8,7 @@ urlpatterns = [
     path('', include('core.urls')),
     path('sluzby/', include('services.urls')),
     path('blog/', include('blog.urls')),
+    path('', include('engagement.urls')),
     path('LegalDashboard/', include('dashboard.urls')),
 ]
 

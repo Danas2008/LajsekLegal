@@ -5,14 +5,80 @@
 {% block dash_content %}
   <div class="dash-greeting">
     <h1>Vítejte, {{ request.user.first_name|default:request.user.username }}</h1>
-    <p>Odsud můžete spravovat obsah webu Lajsek Legal.</p>
+    <p>Odsud můžete spravovat obsah a poptávky webu Lajsek Legal.</p>
   </div>
 
   <div class="dash-tiles">
+    <a class="dash-tile" href="{% url 'dashboard:booking_list' %}">
+      <div class="dash-tile-icon">📅</div>
+      <h3>Schůzky</h3>
+      <p>{{ upcoming_bookings|length }} dnes/zítra</p>
+    </a>
+    <a class="dash-tile" href="{% url 'dashboard:contact_list' %}">
+      <div class="dash-tile-icon">✉</div>
+      <h3>Formuláře</h3>
+      <p>{{ unresolved_contacts }} nevyřešených</p>
+    </a>
+    <a class="dash-tile" href="{% url 'dashboard:review_list' %}">
+      <div class="dash-tile-icon">★</div>
+      <h3>Recenze</h3>
+      <p>{{ pending_reviews }} čeká na schválení</p>
+    </a>
     <a class="dash-tile" href="{% url 'dashboard:blog_list' %}">
       <div class="dash-tile-icon">✎</div>
       <h3>Blog</h3>
-      <p>{{ post_count }} {{ clanek_word }} — přidávejte a upravujte příspěvky.</p>
+      <p>{{ post_count }} {{ clanek_word }}</p>
+    </a>
+    <a class="dash-tile" href="{% url 'dashboard:newsletter_list' %}">
+      <div class="dash-tile-icon">📧</div>
+      <h3>Newsletter</h3>
+      <p>{{ newsletter_count }} odběratelů</p>
+    </a>
+    <a class="dash-tile" href="{% url 'dashboard:faq_list' %}">
+      <div class="dash-tile-icon">?</div>
+      <h3>FAQ</h3>
+      <p>Spravovat otázky</p>
     </a>
   </div>
+
+  {% if upcoming_bookings %}
+    <div class="dash-title" style="margin-top:44px;">
+      <h1 style="font-size:1.3rem;">Nadcházející schůzky</h1>
+    </div>
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead><tr><th>Datum</th><th>Čas</th><th>Klient</th><th>Status</th></tr></thead>
+        <tbody>
+          {% for b in upcoming_bookings %}
+            <tr>
+              <td>{{ b.datetime|date:'d. n. Y' }}</td>
+              <td>{{ b.datetime|date:'H:i' }}</td>
+              <td>{{ b.client_name }}</td>
+              <td>{{ b.get_status_display }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+
+  {% if top_posts %}
+    <div class="dash-title" style="margin-top:44px;">
+      <h1 style="font-size:1.3rem;">Nejčtenější články</h1>
+    </div>
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead><tr><th>Název</th><th>Datum</th><th>Zobrazení</th></tr></thead>
+        <tbody>
+          {% for post in top_posts %}
+            <tr>
+              <td>{{ post.title }}</td>
+              <td>{{ post.published_at|date:'d. n. Y' }}</td>
+              <td>{{ post.views }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
 {% endblock %}

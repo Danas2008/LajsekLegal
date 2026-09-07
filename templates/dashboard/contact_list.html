@@ -1,0 +1,55 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Formuláře{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Formuláře</h1>
+    <a class="button" href="{% url 'dashboard:contact_export' %}">Export CSV</a>
+  </div>
+
+  <div class="dash-filters">
+    <a href="?filter=new" class="{% if status_filter == 'new' %}active{% endif %}">Nevyřešené</a>
+    <a href="?filter=resolved" class="{% if status_filter == 'resolved' %}active{% endif %}">Vyřešené</a>
+    <a href="?filter=archived" class="{% if status_filter == 'archived' %}active{% endif %}">Archiv</a>
+  </div>
+
+  {% if contacts %}
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead>
+          <tr><th>Datum</th><th>Jméno</th><th>E-mail</th><th>Zpráva</th><th>Akce</th></tr>
+        </thead>
+        <tbody>
+          {% for c in contacts %}
+            <tr>
+              <td>{{ c.created_at|date:'d. n. Y H:i' }}</td>
+              <td>{{ c.name }}</td>
+              <td>{{ c.email }}</td>
+              <td>{{ c.message|truncatechars:60 }}</td>
+              <td>
+                <div class="dash-actions">
+                  {% if c.status != 'resolved' %}
+                    <form method="post" action="{% url 'dashboard:contact_resolve' c.pk %}">
+                      {% csrf_token %}<button type="submit">Vyřešeno</button>
+                    </form>
+                  {% endif %}
+                  {% if c.status != 'archived' %}
+                    <form method="post" action="{% url 'dashboard:contact_archive' c.pk %}">
+                      {% csrf_token %}<button type="submit">Archivovat</button>
+                    </form>
+                  {% endif %}
+                  <form method="post" action="{% url 'dashboard:contact_delete' c.pk %}" onsubmit="return confirm('Smazat tuto zprávu?');">
+                    {% csrf_token %}<button type="submit" class="danger">Smazat</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="dash-empty">Žádné zprávy v této kategorii.</div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>FAQ</h1>
+    <a class="button" href="{% url 'dashboard:faq_create' %}">+ Nová otázka</a>
+  </div>
+
+  {% if faqs %}
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead><tr><th>Otázka</th><th>Odpověď</th><th>Status</th><th>Akce</th></tr></thead>
+        <tbody>
+          {% for item in faqs %}
+            <tr>
+              <td>{{ item.question }}</td>
+              <td>{{ item.answer|truncatechars:60 }}</td>
+              <td>{% if item.active %}Zveřejněno{% else %}Skryto{% endif %}</td>
+              <td>
+                <div class="dash-actions">
+                  <form method="post" action="{% url 'dashboard:faq_move' item.pk 'up' %}">{% csrf_token %}<button type="submit">↑</button></form>
+                  <form method="post" action="{% url 'dashboard:faq_move' item.pk 'down' %}">{% csrf_token %}<button type="submit">↓</button></form>
+                  <a href="{% url 'dashboard:faq_edit' item.pk %}">Upravit</a>
+                  <form method="post" action="{% url 'dashboard:faq_delete' item.pk %}" onsubmit="return confirm('Smazat tuto otázku?');">
+                    {% csrf_token %}<button type="submit" class="danger">Smazat</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="dash-empty">Zatím žádné otázky.</div>
+  {% endif %}
+{% endblock %}

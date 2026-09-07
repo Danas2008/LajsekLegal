@@ -236,9 +236,37 @@
   background: #faf8f5;
 }
 
+.dash-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dash-filters a {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.dash-filters a.active {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: #fff;
+}
+
 .dash-actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 16px;
+}
+
+.dash-actions form {
+  display: inline;
 }
 
 .dash-actions a,

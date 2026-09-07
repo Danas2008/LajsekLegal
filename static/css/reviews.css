@@ -1,0 +1,24 @@
+.reviews-average {
+  margin-top: 14px;
+  color: var(--wine);
+  font-weight: 800;
+}
+
+.review-stars {
+  margin: 0 0 10px;
+  color: var(--wine);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.review-rating-choice {
+  display: flex;
+  gap: 14px;
+}
+
+.review-rating-choice label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}

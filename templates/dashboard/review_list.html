@@ -1,0 +1,49 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Recenze{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Recenze</h1>
+    {% if average %}<span class="dash-badge">★ {{ average }}/5 ({{ approved_count }})</span>{% endif %}
+  </div>
+
+  <div class="dash-filters">
+    <a href="?filter=pending" class="{% if status_filter == 'pending' %}active{% endif %}">Čekající</a>
+    <a href="?filter=approved" class="{% if status_filter == 'approved' %}active{% endif %}">Schválené</a>
+  </div>
+
+  {% if reviews %}
+    <div class="dash-table-wrap">
+      <table class="dash-table">
+        <thead>
+          <tr><th>Autor</th><th>Hodnocení</th><th>Text</th><th>Status</th><th>Akce</th></tr>
+        </thead>
+        <tbody>
+          {% for r in reviews %}
+            <tr>
+              <td>{{ r.author }}</td>
+              <td>{{ r.rating }}/5</td>
+              <td>{{ r.text|truncatechars:80 }}</td>
+              <td>{% if r.approved %}Schváleno{% else %}Čeká{% endif %}</td>
+              <td>
+                <div class="dash-actions">
+                  {% if not r.approved %}
+                    <form method="post" action="{% url 'dashboard:review_approve' r.pk %}">
+                      {% csrf_token %}<button type="submit">Schválit</button>
+                    </form>
+                  {% endif %}
+                  <form method="post" action="{% url 'dashboard:review_delete' r.pk %}" onsubmit="return confirm('Smazat tuto recenzi?');">
+                    {% csrf_token %}<button type="submit" class="danger">Smazat</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="dash-empty">Žádné recenze v této kategorii.</div>
+  {% endif %}
+{% endblock %}

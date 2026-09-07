@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect, render
+
+from .forms import ContactForm
 
 
 def home(request):
@@ -22,7 +25,16 @@ def references(request):
 
 
 def contact(request):
-    return render(request, 'kontakt.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Děkujeme, Vaše zpráva byla odeslána. Ozveme se co nejdříve.')
+            return redirect('contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'kontakt.html', {'form': form})
 
 
 def privacy(request):
