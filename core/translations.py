@@ -47,6 +47,13 @@ EN = {
     'home_blog_link': 'All articles',
     'home_cta_title': 'Need legal help?',
     'home_cta_button': 'Contact',
+    'home_reviews_link': 'Read client reviews',
+    'home_booking_title': 'Book a meeting online',
+    'home_booking_text': 'Pick an available time from the calendar and set up a consultation in a couple of clicks.',
+    'home_booking_link': 'Go to booking',
+    'home_faq_title': 'Frequently asked questions',
+    'home_faq_text': 'Answers to the most common questions about working with us, pricing, and our legal services.',
+    'home_faq_link': 'View FAQ',
     'home_blog_post1': 'Chat Control: protecting children, or the start of a new era of digital surveillance?',
     'home_blog_post2': 'What counts as normal wear and tear? A practical, plain-language guide',
     'home_blog_post3': 'Annoying sales calls: what to do when a company calls you uninvited',
@@ -64,6 +71,8 @@ EN = {
     # --- References page ---
     'references_title': 'References',
     'references_disclaimer': 'Under the attorney code of ethics, attorneys are prohibited from disclosing any information about their clients. We fully respect this rule – below, however, are a few words about our services.',
+    'references_reviews_prompt': 'Want to read reviews from other clients, or write your own?',
+    'references_reviews_link': 'Go to reviews',
 
     # --- Contact page ---
     'contact_title': 'Contact',
@@ -114,6 +123,8 @@ EN = {
     'booking_submit': 'Book the meeting',
     'booking_selected_prefix': 'Selected time:',
     'booking_select_alert': 'Please choose a meeting time.',
+    'booking_pick_day': 'First, choose a day',
+    'booking_no_slots_day': 'No available time on this day.',
 
     # --- Reviews ---
     'reviews_title': 'Reviews',
@@ -128,6 +139,8 @@ EN = {
     'faq_search_placeholder': 'Search questions…',
     'faq_empty': 'There are no questions here yet.',
     'faq_no_match': 'No question matches your search.',
+    'faq_cta_text': "Didn't find an answer to your question?",
+    'faq_cta_button': 'Write to us',
 
     # --- Shared form field labels ---
     'form_label_name': 'Name',

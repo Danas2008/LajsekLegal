@@ -22,10 +22,7 @@
             <span>+420 723 506 568</span>
           </a>
           <a class="button" href="{% url 'contact' %}">{% t "header_cta_contact" "Kontaktujte nás" %}</a>
-          <div class="lang-switch">
-            <a href="{% url 'set_language' 'cs' %}?next={{ request.path }}"{% if LANG == 'cs' %} class="active"{% endif %}>CS</a>
-            <a href="{% url 'set_language' 'en' %}?next={{ request.path }}"{% if LANG == 'en' %} class="active"{% endif %}>EN</a>
-          </div>
+          <a class="lang-switch" href="{% if LANG == 'en' %}{% url 'set_language' 'cs' %}{% else %}{% url 'set_language' 'en' %}{% endif %}?next={{ request.path }}" title="{% t 'lang_switch_label' 'Jazyk' %}">{% if LANG == 'en' %}CS{% else %}EN{% endif %}</a>
           {% if request.user.is_staff %}{% csrf_token %}
           <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
             <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>

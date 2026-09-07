@@ -1,19 +1,138 @@
-.booking-days {
+.booking-calendar {
   display: grid;
   gap: 24px;
   margin-top: 24px;
 }
 
-.booking-day h3 {
-  margin: 0 0 10px;
+@media (min-width: 780px) {
+  .booking-calendar {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    align-items: start;
+  }
+}
+
+.calendar-panel,
+.time-panel {
+  padding: 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.calendar-header h3 {
+  margin: 0;
   font: 500 1.05rem var(--serif);
   text-transform: capitalize;
 }
 
-.booking-slots {
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.cal-nav svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.cal-nav:hover:not(:disabled) {
+  border-color: var(--wine);
+  color: var(--wine);
+}
+
+.cal-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.calendar-weekdays span {
+  padding: 6px 0;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: default;
+}
+
+.cal-day.has-slots {
+  background: #f1ece8;
+  color: var(--wine);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cal-day.has-slots:hover {
+  background: var(--wine);
+  color: #fff;
+}
+
+.cal-day.is-selected {
+  background: var(--wine);
+  color: #fff;
+}
+
+.cal-day.disabled {
+  color: #cfc8c1;
+}
+
+.time-panel h3 {
+  margin: 0 0 16px;
+  font: 500 1.05rem var(--serif);
+}
+
+.time-slots {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.time-slots p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
 }
 
 .booking-slot {

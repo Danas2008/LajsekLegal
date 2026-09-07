@@ -1,10 +1,11 @@
 (function () {
-  var items = document.querySelectorAll('.faq-item');
+  var cards = document.querySelectorAll('.faq-card');
 
-  items.forEach(function (item) {
-    var question = item.querySelector('.faq-question');
+  cards.forEach(function (card) {
+    var question = card.querySelector('.faq-question');
     question.addEventListener('click', function () {
-      item.classList.toggle('is-open');
+      var isOpen = card.classList.toggle('is-open');
+      question.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   });
 
@@ -16,10 +17,10 @@
     var term = search.value.trim().toLowerCase();
     var visibleCount = 0;
 
-    items.forEach(function (item) {
-      var text = item.textContent.toLowerCase();
+    cards.forEach(function (card) {
+      var text = card.textContent.toLowerCase();
       var matches = text.indexOf(term) !== -1;
-      item.style.display = matches ? '' : 'none';
+      card.style.display = matches ? '' : 'none';
       if (matches) visibleCount += 1;
     });
 

@@ -35,10 +35,7 @@
             <span>+420 723 506 568</span>
           </a>
           <a class="button" href="{% url 'contact' %}">{% t "header_cta_contact" "Kontaktujte nás" %}</a>
-          <div class="lang-switch">
-            <a href="{% url 'set_language' 'cs' %}?next={{ request.path }}"{% if LANG == 'cs' %} class="active"{% endif %}>CS</a>
-            <a href="{% url 'set_language' 'en' %}?next={{ request.path }}"{% if LANG == 'en' %} class="active"{% endif %}>EN</a>
-          </div>
+          <a class="lang-switch" href="{% if LANG == 'en' %}{% url 'set_language' 'cs' %}{% else %}{% url 'set_language' 'en' %}{% endif %}?next={{ request.path }}" title="{% t 'lang_switch_label' 'Jazyk' %}">{% if LANG == 'en' %}CS{% else %}EN{% endif %}</a>
           {% if request.user.is_staff %}{% csrf_token %}
           <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
             <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -118,10 +115,28 @@
           <div class="disclaimer">{% edit "home_references_disclaimer" "Podle advokátního etického kodexu je advokátům zakázáno poskytovat jakékoli informace o svých klientech. Toto pravidlo plně respektujeme.<br><br>Níže však uvádíme alespoň několik vyjádření o našich službách:" %}</div>
           <p style="margin-top: 22px">
             <a class="text-link" href="{% url 'references' %}">{% t "home_references_link" "Zobrazit reference" %}</a>
+            &nbsp;·&nbsp;
+            <a class="text-link" href="{% url 'recenze' %}">{% t "home_reviews_link" "Přečíst recenze klientů" %}</a>
           </p>
         </div>
       </section>
       <section class="section alt">
+        <div class="wrap teaser-grid">
+          <a class="teaser-card" href="{% url 'booking' %}">
+            <span class="teaser-icon">📅</span>
+            <h3>{% t "home_booking_title" "Rezervujte si schůzku online" %}</h3>
+            <p>{% t "home_booking_text" "Vyberte si volný termín z kalendáře a domluvte si konzultaci během chvilky." %}</p>
+            <span class="text-link">{% t "home_booking_link" "Přejít na rezervaci" %} →</span>
+          </a>
+          <a class="teaser-card" href="{% url 'faq' %}">
+            <span class="teaser-icon">?</span>
+            <h3>{% t "home_faq_title" "Časté otázky" %}</h3>
+            <p>{% t "home_faq_text" "Odpovědi na nejčastější dotazy o spolupráci, cenách a právních službách." %}</p>
+            <span class="text-link">{% t "home_faq_link" "Zobrazit FAQ" %} →</span>
+          </a>
+        </div>
+      </section>
+      <section class="section">
         <div class="wrap">
           <h2>{% edit "home_blog_title" "Blog" %}</h2>
           <div class="posts">

@@ -32,10 +32,7 @@
             <span>+420 723 506 568</span>
           </a>
           <a class="button" href="{% url 'contact' %}">{% t "header_cta_contact" "Kontaktujte nás" %}</a>
-          <div class="lang-switch">
-            <a href="{% url 'set_language' 'cs' %}?next={{ request.path }}"{% if LANG == 'cs' %} class="active"{% endif %}>CS</a>
-            <a href="{% url 'set_language' 'en' %}?next={{ request.path }}"{% if LANG == 'en' %} class="active"{% endif %}>EN</a>
-          </div>
+          <a class="lang-switch" href="{% if LANG == 'en' %}{% url 'set_language' 'cs' %}{% else %}{% url 'set_language' 'en' %}{% endif %}?next={{ request.path }}" title="{% t 'lang_switch_label' 'Jazyk' %}">{% if LANG == 'en' %}CS{% else %}EN{% endif %}</a>
           {% if request.user.is_staff %}{% csrf_token %}
           <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
             <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -61,25 +58,33 @@
       </section>
 
       <section class="content">
-        <div class="wrap reading">
-          <input type="search" id="faq-search" class="faq-search" placeholder="{% t 'faq_search_placeholder' 'Hledat v otázkách…' %}">
+        <div class="wrap faq-shell">
+          <div class="faq-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="search" id="faq-search" class="faq-search" placeholder="{% t 'faq_search_placeholder' 'Hledat v otázkách…' %}">
+          </div>
 
           <div class="faq-list">
             {% for item in faqs %}
-              <div class="faq-item">
-                <button type="button" class="faq-question">
-                  {{ item.question }}
-                  <span class="faq-toggle">+</span>
+              <div class="faq-card">
+                <button type="button" class="faq-question" aria-expanded="false">
+                  <span>{{ item.question }}</span>
+                  <span class="faq-toggle-icon">+</span>
                 </button>
-                <div class="faq-answer">
-                  <p>{{ item.answer }}</p>
+                <div class="faq-answer-wrap">
+                  <div class="faq-answer-inner"><p>{{ item.answer }}</p></div>
                 </div>
               </div>
             {% empty %}
               <p>{% t "faq_empty" "Zatím zde nejsou žádné otázky." %}</p>
             {% endfor %}
           </div>
-          <p id="faq-empty" class="disclaimer" style="display:none;">{% t "faq_no_match" "Žádná otázka neodpovídá hledanému výrazu." %}</p>
+          <p id="faq-empty" class="disclaimer" style="display:none; margin-top:16px;">{% t "faq_no_match" "Žádná otázka neodpovídá hledanému výrazu." %}</p>
+
+          <div class="faq-cta">
+            <p>{% t "faq_cta_text" "Nenašli jste odpověď na svou otázku?" %}</p>
+            <a class="button" href="{% url 'contact' %}">{% t "faq_cta_button" "Napište nám" %}</a>
+          </div>
         </div>
       </section>
     </main>

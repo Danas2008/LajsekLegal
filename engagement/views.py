@@ -1,4 +1,5 @@
 import datetime as dt
+import json
 
 from django.conf import settings
 from django.contrib import messages
@@ -43,6 +44,13 @@ def available_slots():
     return days
 
 
+def slots_by_date_json():
+    data = {}
+    for day in available_slots():
+        data[day['date'].isoformat()] = [s.isoformat() for s in day['slots']]
+    return json.dumps(data)
+
+
 def booking(request):
     if request.method == 'POST':
         slot_raw = request.POST.get('slot')
@@ -78,6 +86,8 @@ def booking(request):
     context = {
         'form': form,
         'days': available_slots(),
+        'slots_json': slots_by_date_json(),
+        'days_ahead': settings.BOOKING_DAYS_AHEAD,
     }
     return render(request, 'booking.html', context)
 

@@ -32,10 +32,7 @@
             <span>+420 723 506 568</span>
           </a>
           <a class="button" href="{% url 'contact' %}">{% t "header_cta_contact" "Kontaktujte nás" %}</a>
-          <div class="lang-switch">
-            <a href="{% url 'set_language' 'cs' %}?next={{ request.path }}"{% if LANG == 'cs' %} class="active"{% endif %}>CS</a>
-            <a href="{% url 'set_language' 'en' %}?next={{ request.path }}"{% if LANG == 'en' %} class="active"{% endif %}>EN</a>
-          </div>
+          <a class="lang-switch" href="{% if LANG == 'en' %}{% url 'set_language' 'cs' %}{% else %}{% url 'set_language' 'en' %}{% endif %}?next={{ request.path }}" title="{% t 'lang_switch_label' 'Jazyk' %}">{% if LANG == 'en' %}CS{% else %}EN{% endif %}</a>
           {% if request.user.is_staff %}{% csrf_token %}
           <a class="icon-btn" href="{% url 'dashboard:home' %}" title="Dashboard" aria-label="Dashboard">
             <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -75,25 +72,35 @@
           <form method="post" id="booking-form"
                 data-selected-prefix="{% t 'booking_selected_prefix' 'Vybraný termín:' %}"
                 data-select-alert="{% t 'booking_select_alert' 'Vyberte prosím termín schůzky.' %}"
-                data-at-word="{% if LANG == 'en' %}at{% else %}v{% endif %}">
+                data-at-word="{% if LANG == 'en' %}at{% else %}v{% endif %}"
+                data-pick-day="{% t 'booking_pick_day' 'Nejprve vyberte den' %}"
+                data-no-slots-day="{% t 'booking_no_slots_day' 'V tento den nejsou volné žádné termíny.' %}">
             {% csrf_token %}
             <input type="hidden" name="slot" id="booking-slot" value="">
 
             <h2>{% t "booking_step1" "1. Vyberte termín" %}</h2>
             {% if days %}
-              <div class="booking-days">
-                {% for day in days %}
-                  <div class="booking-day">
-                    <h3>{{ day.date|date:DAY_FMT }}</h3>
-                    <div class="booking-slots">
-                      {% for slot in day.slots %}
-                        <button type="button" class="booking-slot" data-slot="{{ slot.isoformat }}">
-                          {{ slot|date:'H:i' }}
-                        </button>
-                      {% endfor %}
-                    </div>
+              <div class="booking-calendar"
+                   id="booking-calendar"
+                   data-slots="{{ slots_json|escapejs }}"
+                   data-lang="{{ LANG }}">
+                <div class="calendar-panel">
+                  <div class="calendar-header">
+                    <button type="button" class="cal-nav" id="cal-prev" aria-label="Previous month">
+                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <h3 id="cal-month-label"></h3>
+                    <button type="button" class="cal-nav" id="cal-next" aria-label="Next month">
+                      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
                   </div>
-                {% endfor %}
+                  <div class="calendar-weekdays" id="cal-weekdays"></div>
+                  <div class="calendar-days" id="cal-days"></div>
+                </div>
+                <div class="time-panel">
+                  <h3 id="time-panel-title">{% t "booking_pick_day" "Nejprve vyberte den" %}</h3>
+                  <div class="time-slots" id="time-slots"></div>
+                </div>
               </div>
             {% else %}
               <p>{% t "booking_no_slots" "V nejbližší době nejsou volné žádné termíny, kontaktujte nás prosím přímo." %}</p>
