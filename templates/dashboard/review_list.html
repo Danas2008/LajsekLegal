@@ -17,7 +17,7 @@
     <div class="dash-table-wrap">
       <table class="dash-table">
         <thead>
-          <tr><th>Autor</th><th>Hodnocení</th><th>Text</th><th>Status</th><th>Akce</th></tr>
+          <tr><th>Autor</th><th>Hodnocení</th><th>Text</th><th>EN</th><th>Status</th><th>Akce</th></tr>
         </thead>
         <tbody>
           {% for r in reviews %}
@@ -25,9 +25,11 @@
               <td>{{ r.author }}</td>
               <td>{{ r.rating }}/5</td>
               <td>{{ r.text|truncatechars:80 }}</td>
+              <td>{% if r.text_en %}✓{% else %}—{% endif %}</td>
               <td>{% if r.approved %}Schváleno{% else %}Čeká{% endif %}</td>
               <td>
                 <div class="dash-actions">
+                  <a href="{% url 'dashboard:review_edit' r.pk %}">Upravit</a>
                   {% if not r.approved %}
                     <form method="post" action="{% url 'dashboard:review_approve' r.pk %}">
                       {% csrf_token %}<button type="submit">Schválit</button>

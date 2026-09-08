@@ -11,7 +11,7 @@ from django.views.decorators.http import require_POST
 
 from blog.models import BlogPost
 from core.models import ContactMessage, TextBlock
-from engagement.forms import BookingSettingsForm, FAQForm
+from engagement.forms import AdminReviewForm, BookingSettingsForm, FAQForm
 from engagement.models import FAQ, Booking, BookingSettings, NewsletterSubscriber, Review
 
 from .forms import BlogPostForm
@@ -244,6 +244,21 @@ def review_list(request):
         'average': average,
         'approved_count': approved_qs.count(),
     })
+
+
+@staff_member_required
+def review_edit(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    if request.method == 'POST':
+        form = AdminReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Reference byla uložena.')
+            return redirect('dashboard:review_list')
+    else:
+        form = AdminReviewForm(instance=review)
+
+    return render(request, 'dashboard/review_form.html', {'form': form, 'review': review})
 
 
 @staff_member_required

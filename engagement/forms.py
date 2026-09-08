@@ -84,6 +84,27 @@ class ReviewForm(forms.ModelForm):
         }
 
 
+class AdminReviewForm(forms.ModelForm):
+    """Úprava reference v dashboardu — na rozdíl od ReviewForm (veřejný formulář)
+    obsahuje i anglický překlad, který doplňuje Vladimír."""
+
+    class Meta:
+        model = Review
+        fields = ['author', 'rating', 'text', 'text_en', 'approved']
+        widgets = {
+            'author': forms.TextInput(attrs={'placeholder': 'Jméno'}),
+            'rating': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'text': forms.Textarea(attrs={'rows': 5}),
+            'text_en': forms.Textarea(attrs={'rows': 5, 'placeholder': 'English translation (optional)'}),
+        }
+        labels = {
+            'author': 'Jméno',
+            'text': 'Text reference',
+            'text_en': 'Text reference (anglicky)',
+            'approved': 'Schváleno',
+        }
+
+
 class NewsletterForm(forms.ModelForm):
     class Meta:
         model = NewsletterSubscriber
@@ -97,13 +118,17 @@ class NewsletterForm(forms.ModelForm):
 class FAQForm(forms.ModelForm):
     class Meta:
         model = FAQ
-        fields = ['question', 'answer', 'active']
+        fields = ['question', 'answer', 'question_en', 'answer_en', 'active']
         widgets = {
             'question': forms.TextInput(attrs={'placeholder': 'Otázka'}),
             'answer': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Odpověď'}),
+            'question_en': forms.TextInput(attrs={'placeholder': 'Question (optional)'}),
+            'answer_en': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Answer (optional)'}),
         }
         labels = {
             'question': 'Otázka',
             'answer': 'Odpověď',
+            'question_en': 'Otázka (anglicky)',
+            'answer_en': 'Odpověď (anglicky)',
             'active': 'Zveřejněno',
         }

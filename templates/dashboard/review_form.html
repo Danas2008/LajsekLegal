@@ -1,0 +1,31 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Upravit referenci{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Upravit referenci</h1>
+  </div>
+
+  <div class="dash-card">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="dash-form-row">
+          {% if field.name == 'approved' %}
+            <label style="display:flex; align-items:center; gap:8px;">{{ field }} {{ field.label }}</label>
+          {% else %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}<p style="color:var(--ink-soft); font-size:0.78rem; margin:6px 0 0;">{{ field.help_text }}</p>{% endif %}
+          {% endif %}
+          {% if field.errors %}<p class="dash-field-error">{{ field.errors|join:', ' }}</p>{% endif %}
+        </div>
+      {% endfor %}
+      <div class="dash-form-actions">
+        <button class="button" type="submit">Uložit</button>
+        <a class="text-link" href="{% url 'dashboard:review_list' %}">Zrušit</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

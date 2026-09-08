@@ -24,6 +24,7 @@ urlpatterns = [
     path('formulare/export/', views.contact_export, name='contact_export'),
 
     path('recenze/', views.review_list, name='review_list'),
+    path('recenze/<int:pk>/upravit/', views.review_edit, name='review_edit'),
     path('recenze/<int:pk>/schvalit/', views.review_approve, name='review_approve'),
     path('recenze/<int:pk>/smazat/', views.review_delete, name='review_delete'),
 

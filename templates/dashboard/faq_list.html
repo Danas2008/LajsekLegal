@@ -11,12 +11,13 @@
   {% if faqs %}
     <div class="dash-table-wrap">
       <table class="dash-table">
-        <thead><tr><th>Otázka</th><th>Odpověď</th><th>Status</th><th>Akce</th></tr></thead>
+        <thead><tr><th>Otázka</th><th>Odpověď</th><th>EN</th><th>Status</th><th>Akce</th></tr></thead>
         <tbody>
           {% for item in faqs %}
             <tr>
               <td>{{ item.question }}</td>
               <td>{{ item.answer|truncatechars:60 }}</td>
+              <td>{% if item.question_en and item.answer_en %}✓{% else %}—{% endif %}</td>
               <td>{% if item.active %}Zveřejněno{% else %}Skryto{% endif %}</td>
               <td>
                 <div class="dash-actions">

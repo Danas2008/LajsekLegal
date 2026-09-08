@@ -31,6 +31,10 @@ class Review(models.Model):
     email = models.EmailField('E-mail', blank=True)
     rating = models.PositiveSmallIntegerField('Hodnocení')
     text = models.TextField('Text recenze')
+    text_en = models.TextField(
+        'Text recenze (anglicky)', blank=True,
+        help_text='Nepovinné. Pokud vyplníte, anglická verze webu zobrazí tento text místo automatického originálu.',
+    )
     approved = models.BooleanField('Schváleno', default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -85,6 +89,11 @@ class BookingSettings(models.Model):
 class FAQ(models.Model):
     question = models.CharField('Otázka', max_length=255)
     answer = models.TextField('Odpověď')
+    question_en = models.CharField(
+        'Otázka (anglicky)', max_length=255, blank=True,
+        help_text='Nepovinné. Pokud vyplníte, anglická verze webu zobrazí tuto otázku místo automatického originálu.',
+    )
+    answer_en = models.TextField('Odpověď (anglicky)', blank=True, help_text='Nepovinné, viz otázka výše.')
     order = models.PositiveIntegerField('Pořadí', default=0)
     active = models.BooleanField('Aktivní', default=True)
 

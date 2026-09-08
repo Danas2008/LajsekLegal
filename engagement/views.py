@@ -4,7 +4,7 @@ import json
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
-from django.utils import timezone
+from django.utils import timezone, translation
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -95,6 +95,7 @@ def booking(request):
 
 def faq(request):
     faqs = FAQ.objects.filter(active=True)
+    is_en = translation.get_language() == 'en'
     faq_schema = None
     if faqs:
         faq_schema = ld_json({
@@ -103,8 +104,11 @@ def faq(request):
             'mainEntity': [
                 {
                     '@type': 'Question',
-                    'name': item.question,
-                    'acceptedAnswer': {'@type': 'Answer', 'text': item.answer},
+                    'name': (item.question_en if is_en and item.question_en else item.question),
+                    'acceptedAnswer': {
+                        '@type': 'Answer',
+                        'text': (item.answer_en if is_en and item.answer_en else item.answer),
+                    },
                 }
                 for item in faqs
             ],
