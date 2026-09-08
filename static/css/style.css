@@ -66,9 +66,24 @@ img {
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--ink);
   line-height: 1.08;
   text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  flex: none;
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: block;
 }
 
 .brand strong {
@@ -251,6 +266,10 @@ img {
   background: var(--wine-dark);
 }
 
+.hero .image-slot {
+  min-height: 420px;
+}
+
 .image-slot {
   position: relative;
   min-height: 280px;
@@ -268,7 +287,7 @@ img {
 }
 
 .hero .image-slot img {
-  object-position: 20% center;
+  object-position: 50% 12%;
 }
 
 .section,
@@ -1102,6 +1121,10 @@ blockquote footer span {
 
   .brand {
     width: auto;
+  }
+
+  .brand-logo {
+    height: 44px;
   }
 
   .header-cta .button {
