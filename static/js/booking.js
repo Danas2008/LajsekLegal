@@ -148,6 +148,7 @@
         hiddenInput.value = isoSlot;
         selectedLabel.style.display = 'block';
         selectedLabel.textContent = selectedPrefix + ' ' + label + ' ' + atWord + ' ' + hh + ':' + mm;
+        scrollToStepTwo();
       });
 
       timeSlotsEl.appendChild(btn);
@@ -167,6 +168,19 @@
     if (viewMonth > 11) { viewMonth = 0; viewYear += 1; }
     renderCalendar();
   });
+
+  var step2Heading = document.getElementById('booking-step2-heading');
+  var nameField = document.getElementById('id_client_name');
+
+  function scrollToStepTwo() {
+    if (!step2Heading) return;
+    window.setTimeout(function () {
+      step2Heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (nameField && !nameField.value) {
+        window.setTimeout(function () { nameField.focus({ preventScroll: true }); }, 400);
+      }
+    }, 250);
+  }
 
   renderWeekdayHeader();
   renderCalendar();

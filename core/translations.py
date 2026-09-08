@@ -85,6 +85,10 @@ EN = {
     'contact_form_title': 'Write to us',
     'contact_form_text': 'Briefly describe your case – we will get back to you by the next business day at the latest.',
     'contact_submit': 'Send message',
+    'contact_booking_cta_title': "Don't want to wait for a reply?",
+    'contact_booking_cta_text': 'Book an online consultation from the available slots in the calendar.',
+    'contact_booking_cta_link': 'Go to booking',
+    'contact_map_load': 'Show map',
 
     # --- Privacy page ---
     'privacy_title': 'Privacy policy',
