@@ -418,6 +418,19 @@ blockquote footer span {
   font: 500 1.24rem/1.28 var(--serif);
 }
 
+.newsletter-hint {
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.newsletter-hint::before {
+  content: "✉ ";
+  color: var(--wine);
+}
+
 .post h3 a {
   text-decoration: none;
   transition: color 0.15s ease;
@@ -726,7 +739,6 @@ blockquote footer span {
 .newsletter-form input {
   padding: 11px 16px;
   border: 1px solid #2a3342;
-  border-radius: 999px;
   background: #1a2332;
   color: #fff;
   font: inherit;
@@ -744,14 +756,9 @@ blockquote footer span {
   align-items: center;
   gap: 8px;
   padding: 11px 20px;
-  border-radius: 999px;
   font-size: 0.72rem;
   white-space: nowrap;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-
-.newsletter-form .button:hover {
-  transform: translateY(-1px);
+  transition: background 0.15s ease;
 }
 
 .newsletter-form .button::after {

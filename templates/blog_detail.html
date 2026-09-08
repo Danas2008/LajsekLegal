@@ -80,7 +80,8 @@
       <section class="content">
         <article class="wrap reading">
           {{ post.body|safe }}
-          <p style="margin-top: 40px">
+          <p class="newsletter-hint" style="margin-top: 40px">{% t "blog_newsletter_hint" "Nechcete přijít o další články? Newsletter s novinkami najdete dole v patičce." %}</p>
+          <p style="margin-top: 16px">
             <a class="text-link" href="{% url 'blog_list' %}">&larr; {% t "blog_back" "Zpět na blog" %}</a>
           </p>
         </article>

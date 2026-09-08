@@ -91,6 +91,9 @@
               <p>{% t "blog_empty" "Zatím zde nejsou žádné články." %}</p>
             {% endfor %}
           </div>
+          {% if posts %}
+            <p class="newsletter-hint">{% t "blog_newsletter_hint" "Nechcete přijít o další články? Newsletter s novinkami najdete dole v patičce." %}</p>
+          {% endif %}
         </div>
       </section>
     </main>

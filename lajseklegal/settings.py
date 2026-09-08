@@ -166,12 +166,22 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# E-mail — dokud nemáme SMTP heslo od Vladimíra, e-maily se jen vypisují do konzole.
-# Až heslo bude k dispozici, přepnout EMAIL_BACKEND na 'django.core.mail.backends.smtp.EmailBackend'
-# a doplnit EMAIL_HOST / EMAIL_HOST_USER / EMAIL_HOST_PASSWORD / EMAIL_PORT / EMAIL_USE_TLS.
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'noreply@lajseklegal.cz'
-ADMIN_NOTIFICATION_EMAIL = 'vlajsek@lajseklegal.cz'
+# E-mail — dokud EMAIL_HOST_PASSWORD není nastavené (env proměnná na serveru),
+# e-maily se jen vypisují do konzole. Jakmile nastavíte SMTP údaje jako env
+# proměnné, automaticky se přepne na skutečné odesílání přes SMTP.
+EMAIL_HOST = os.environ.get('EMAIL_HOST', '')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'noreply@lajseklegal.cz')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
+
+if EMAIL_HOST_PASSWORD:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@lajseklegal.cz')
+ADMIN_NOTIFICATION_EMAIL = os.environ.get('ADMIN_NOTIFICATION_EMAIL', 'vlajsek@lajseklegal.cz')
 
 # Rezervační systém — výchozí dostupné dny/hodiny nastaví migrace
 # engagement.0003; dál se upravuje přes dashboard (BookingSettings model).
