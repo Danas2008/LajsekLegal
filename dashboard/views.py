@@ -68,7 +68,7 @@ def blog_list(request):
 @staff_member_required
 def blog_create(request):
     if request.method == 'POST':
-        form = BlogPostForm(request.POST)
+        form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.slug = unique_slug(post.title)
@@ -85,7 +85,7 @@ def blog_create(request):
 def blog_edit(request, slug):
     post = get_object_or_404(BlogPost, slug=slug)
     if request.method == 'POST':
-        form = BlogPostForm(request.POST, instance=post)
+        form = BlogPostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
             messages.success(request, 'Článek byl uložen.')

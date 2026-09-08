@@ -13,6 +13,7 @@
       <table class="dash-table">
         <thead>
           <tr>
+            <th></th>
             <th>Titulek</th>
             <th>Datum vydání</th>
             <th>Akce</th>
@@ -21,6 +22,13 @@
         <tbody>
           {% for post in posts %}
             <tr>
+              <td>
+                {% if post.cover_image %}
+                  <img class="dash-table-thumb" src="{{ post.cover_image.url }}" alt="">
+                {% else %}
+                  <span class="dash-table-thumb dash-table-thumb--empty"></span>
+                {% endif %}
+              </td>
               <td>{{ post.title }}</td>
               <td>{{ post.published_at|date:'d. n. Y' }}</td>
               <td>

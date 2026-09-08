@@ -10,7 +10,7 @@
   </div>
 
   <div class="dash-card">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="dash-form-row">
         <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
@@ -21,6 +21,17 @@
         <label for="{{ form.published_at.id_for_label }}">{{ form.published_at.label }}</label>
         {{ form.published_at }}
         {% if form.published_at.errors %}<p class="dash-field-error">{{ form.published_at.errors|join:', ' }}</p>{% endif %}
+      </div>
+      <div class="dash-form-row">
+        <label for="{{ form.cover_image.id_for_label }}">{{ form.cover_image.label }}</label>
+        {% if post.cover_image %}
+          <div class="dash-image-preview">
+            <img src="{{ post.cover_image.url }}" alt="">
+          </div>
+        {% endif %}
+        {{ form.cover_image }}
+        <p class="dash-field-hint">Zobrazí se ve výpisu blogu a v záhlaví článku. Doporučený formát na šířku (např. 1200×800 px).</p>
+        {% if form.cover_image.errors %}<p class="dash-field-error">{{ form.cover_image.errors|join:', ' }}</p>{% endif %}
       </div>
       <div class="dash-form-row">
         <label for="{{ form.excerpt.id_for_label }}">{{ form.excerpt.label }}</label>

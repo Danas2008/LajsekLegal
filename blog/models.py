@@ -8,6 +8,7 @@ class BlogPost(models.Model):
     published_at = models.DateField()
     excerpt = models.TextField(blank=True)
     body = models.TextField(blank=True)
+    cover_image = models.ImageField(upload_to='blog/', blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
 
     class Meta:

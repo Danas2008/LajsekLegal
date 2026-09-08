@@ -420,8 +420,35 @@ blockquote footer span {
 }
 
 .post {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 22px 0;
   border-bottom: 1px solid var(--line);
+}
+
+.post-thumb {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #dfe1de;
+  aspect-ratio: 16 / 9;
+}
+
+.post-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.post-thumb:hover img {
+  transform: scale(1.045);
+}
+
+.post-body {
+  min-width: 0;
 }
 
 .post time {
@@ -435,6 +462,21 @@ blockquote footer span {
 .post h3 {
   margin: 0;
   font: 500 1.24rem/1.28 var(--serif);
+}
+
+.post-cover {
+  overflow: hidden;
+  max-height: 480px;
+  background: #dfe1de;
+  border-bottom: 1px solid var(--line);
+}
+
+.post-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 480px;
+  object-fit: cover;
 }
 
 .blog-newsletter {
@@ -1169,13 +1211,19 @@ blockquote footer span {
   }
 
   .post {
-    display: grid;
-    grid-template-columns: 145px minmax(0, 1fr);
-    gap: 22px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
   }
 
-  .post time {
-    margin: 2px 0 0;
+  .post-thumb {
+    flex: none;
+    width: 220px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .post-body {
+    flex: 1 1 auto;
   }
 
   .cta .wrap {

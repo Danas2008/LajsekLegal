@@ -77,6 +77,11 @@
           {% endif %}
         </div>
       </section>
+      {% if post.cover_image %}
+        <div class="post-cover">
+          <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" fetchpriority="high">
+        </div>
+      {% endif %}
       <section class="content">
         <article class="wrap reading">
           {{ post.body|safe }}
