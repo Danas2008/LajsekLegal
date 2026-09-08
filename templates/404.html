@@ -4,20 +4,13 @@
 <html lang="{{ LANG }}">
   <head>
     <meta charset="utf-8" />
-{% if GA_MEASUREMENT_ID %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ GA_MEASUREMENT_ID }}');
-    </script>
-    {% endif %}
+{% if GA_MEASUREMENT_ID %}<script>window.GA_MEASUREMENT_ID = "{{ GA_MEASUREMENT_ID|escapejs }}";</script>{% endif %}
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>{% t "error_404_title" "Stránka nenalezena" %} | Lajsek Legal</title>
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/cookie-banner.css' %}" />
   </head>
   <body>
     <header class="header">
@@ -47,5 +40,6 @@
         </div>
       </section>
     </main>
+      <script src="{% static 'js/cookie-banner.js' %}" defer></script>
   </body>
 </html>

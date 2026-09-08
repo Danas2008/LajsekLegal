@@ -4,15 +4,7 @@
 <html lang="{{ LANG }}">
   <head>
     <meta charset="utf-8" />
-{% if GA_MEASUREMENT_ID %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '{{ GA_MEASUREMENT_ID }}');
-    </script>
-    {% endif %}
+{% if GA_MEASUREMENT_ID %}<script>window.GA_MEASUREMENT_ID = "{{ GA_MEASUREMENT_ID|escapejs }}";</script>{% endif %}
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{% t "contact_title" "Kontakt" %} | Lajsek Legal</title>
     <meta name="description" content="{% t 'meta_desc_contact' 'Kontaktujte advokátní kancelář Lajsek Legal v Praze – telefon, e-mail, adresa i formulář. Ozveme se vám nejpozději následující pracovní den.' %}" />
@@ -29,6 +21,7 @@
     <link rel="canonical" href="{{ CANONICAL_URL }}" />
     <link rel="icon" href="{% static 'img/ikona.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/cookie-banner.css' %}" />
     <link rel="stylesheet" href="{% static 'css/site-edit.css' %}" />
   </head>
   <body>
@@ -289,5 +282,6 @@
       <div class="site-edit-banner">Režim úprav je zapnutý — klikněte znovu na tužku pro ukončení</div>
       <script src="{% static 'js/site-edit.js' %}" defer></script>
     {% endif %}
+      <script src="{% static 'js/cookie-banner.js' %}" defer></script>
   </body>
 </html>
