@@ -418,17 +418,85 @@ blockquote footer span {
   font: 500 1.24rem/1.28 var(--serif);
 }
 
-.newsletter-hint {
-  margin: 22px 0 0;
-  padding-top: 16px;
-  border-top: 1px dashed var(--line);
-  color: var(--ink-soft);
-  font-size: 0.8rem;
+.blog-newsletter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  margin-top: 32px;
+  padding: 28px 32px;
+  background: #f1ece8;
+  border-radius: 12px;
 }
 
-.newsletter-hint::before {
-  content: "✉ ";
+.blog-newsletter-icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--paper);
+  border-radius: 10px;
   color: var(--wine);
+}
+
+.blog-newsletter-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.blog-newsletter-text {
+  flex: 1 1 220px;
+}
+
+.blog-newsletter-text strong {
+  display: block;
+  margin-bottom: 4px;
+  font: 500 1.15rem var(--serif);
+}
+
+.blog-newsletter-text span {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.blog-newsletter-form {
+  display: flex;
+  flex: 1 1 320px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.blog-newsletter-form input {
+  flex: 1 1 220px;
+  padding: 13px 16px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.blog-newsletter-form input:focus {
+  outline: none;
+  border-color: var(--wine);
+}
+
+.blog-newsletter-form .button {
+  padding: 13px 22px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.blog-newsletter-message {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--wine);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 .post h3 a {

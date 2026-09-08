@@ -92,7 +92,20 @@
             {% endfor %}
           </div>
           {% if posts %}
-            <p class="newsletter-hint">{% t "blog_newsletter_hint" "Nechcete přijít o další články? Newsletter s novinkami najdete dole v patičce." %}</p>
+            <div class="blog-newsletter">
+              <span class="blog-newsletter-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              </span>
+              <div class="blog-newsletter-text">
+                <strong>{% t "blog_newsletter_title" "Nechcete přijít o další články?" %}</strong>
+                <span>{% t "blog_newsletter_hint" "Přihlaste se k odběru novinek a dostávejte nové články přímo do e-mailu." %}</span>
+              </div>
+              <form class="blog-newsletter-form" data-newsletter-form action="{% url 'newsletter_subscribe' %}">
+                <input type="email" name="email" placeholder="{% t 'newsletter_placeholder' 'Váš e-mail' %}" required>
+                <button class="button" type="submit">{% t "newsletter_button" "Odebírat" %}</button>
+              </form>
+              <p class="newsletter-message blog-newsletter-message" hidden></p>
+            </div>
           {% endif %}
         </div>
       </section>

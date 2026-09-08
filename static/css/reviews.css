@@ -11,8 +11,9 @@
   letter-spacing: 2px;
 }
 
-.review-rating-choice {
+.review-rating-choice > div {
   display: flex;
+  flex-wrap: wrap;
   gap: 14px;
 }
 
@@ -21,4 +22,5 @@
   align-items: center;
   gap: 6px;
   font-weight: 700;
+  cursor: pointer;
 }

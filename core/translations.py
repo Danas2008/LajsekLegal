@@ -118,7 +118,8 @@ EN = {
     'blog_read_more': 'Read the full article',
     'blog_empty': 'There are no articles here yet.',
     'blog_back': 'Back to blog',
-    'blog_newsletter_hint': "Don't want to miss new articles? Find our newsletter down in the footer.",
+    'blog_newsletter_title': "Don't want to miss new articles?",
+    'blog_newsletter_hint': 'Subscribe to our newsletter and get new articles straight to your inbox.',
     'blog_edit_in_dashboard': 'Edit in dashboard',
 
     # --- Booking ---
