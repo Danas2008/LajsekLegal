@@ -197,17 +197,9 @@
             </ul>
           </div>
           <div class="map-embed" id="map-embed">
-            <button type="button" class="map-facade" id="map-facade">
-              <span class="map-facade-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </span>
-              <span>{% t "contact_map_load" "Zobrazit mapu" %}</span>
-            </button>
             <iframe
-              id="map-iframe"
-              data-src="https://www.google.com/maps?q=Chrudimsk%C3%A1%201418%2F2%2C%20130%2000%20Praha%203&output=embed"
+              src="https://www.google.com/maps?q=Chrudimsk%C3%A1%201418%2F2%2C%20130%2000%20Praha%203&output=embed"
               title="Mapa – Chrudimská 1418/2, Praha 3"
-              loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
@@ -293,7 +285,6 @@
     </footer>
     <script src="{% static 'js/menu.js' %}" defer></script>
     <script src="{% static 'js/newsletter.js' %}" defer></script>
-    <script src="{% static 'js/map.js' %}" defer></script>
     {% if request.user.is_staff %}
       <div class="site-edit-banner">Režim úprav je zapnutý — klikněte znovu na tužku pro ukončení</div>
       <script src="{% static 'js/site-edit.js' %}" defer></script>

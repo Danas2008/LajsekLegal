@@ -949,58 +949,6 @@ blockquote footer span {
   height: 100%;
   border: 0;
   filter: grayscale(0.2) contrast(1.05);
-  display: none;
-}
-
-.map-embed.is-loaded iframe {
-  display: block;
-}
-
-.map-facade {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  background: #e5e2dc
-    repeating-linear-gradient(45deg, #dfdbd3 0, #dfdbd3 1px, transparent 1px, transparent 14px);
-  border: 0;
-  color: var(--ink);
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.map-embed.is-loaded .map-facade {
-  display: none;
-}
-
-.map-facade-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: var(--paper);
-  border-radius: 999px;
-  color: var(--wine);
-}
-
-.map-facade-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-  fill: none;
-}
-
-.map-facade:hover .map-facade-icon {
-  background: var(--wine);
-  color: #fff;
 }
 
 .form-card {
