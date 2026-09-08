@@ -10,7 +10,9 @@
 
   <div class="dash-tiles">
     <a class="dash-tile" href="{% url 'dashboard:booking_list' %}">
-      <div class="dash-tile-icon">📅</div>
+      <div class="dash-tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+      </div>
       <h3>Schůzky</h3>
       <p>{{ upcoming_bookings|length }} dnes/zítra</p>
     </a>
@@ -30,7 +32,9 @@
       <p>{{ post_count }} {{ clanek_word }}</p>
     </a>
     <a class="dash-tile" href="{% url 'dashboard:newsletter_list' %}">
-      <div class="dash-tile-icon">📧</div>
+      <div class="dash-tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </div>
       <h3>Newsletter</h3>
       <p>{{ newsletter_count }} odběratelů</p>
     </a>

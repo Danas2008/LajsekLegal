@@ -53,6 +53,35 @@ class NewsletterSubscriber(models.Model):
         return self.email
 
 
+class BookingSettings(models.Model):
+    """Jediný řádek nastavení (singleton) — dny a hodiny, kdy lze rezervovat schůzku.
+    Upravuje se přes dashboard, viz dashboard.views.booking_settings."""
+
+    weekdays = models.JSONField('Dny v týdnu', default=list, help_text='0=pondělí … 6=neděle')
+    hours = models.JSONField('Hodiny', default=list, help_text='Celé hodiny, kdy začíná schůzka, např. [9, 10, 11]')
+    days_ahead = models.PositiveIntegerField('Kolik dní dopředu nabízet', default=21)
+
+    class Meta:
+        verbose_name = 'Nastavení rezervací'
+        verbose_name_plural = 'Nastavení rezervací'
+
+    def __str__(self):
+        return 'Nastavení rezervací'
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, _ = cls.objects.get_or_create(pk=1, defaults={
+            'weekdays': [0, 1, 2, 3, 4],
+            'hours': [9, 10, 11, 13, 14, 15, 16],
+            'days_ahead': 21,
+        })
+        return obj
+
+
 class FAQ(models.Model):
     question = models.CharField('Otázka', max_length=255)
     answer = models.TextField('Odpověď')

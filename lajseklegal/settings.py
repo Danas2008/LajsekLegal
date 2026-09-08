@@ -173,7 +173,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'noreply@lajseklegal.cz'
 ADMIN_NOTIFICATION_EMAIL = 'vlajsek@lajseklegal.cz'
 
-# Rezervační systém — dostupné dny (0=pondělí) a hodiny schůzek.
-BOOKING_WEEKDAYS = [0, 1, 2, 3, 4]
-BOOKING_HOURS = [9, 10, 11, 13, 14, 15, 16]
-BOOKING_DAYS_AHEAD = 21
+# Rezervační systém — výchozí dostupné dny/hodiny nastaví migrace
+# engagement.0003; dál se upravuje přes dashboard (BookingSettings model).

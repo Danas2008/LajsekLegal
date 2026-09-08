@@ -64,6 +64,7 @@ EN = {
     # --- Cooperation page ---
     'cooperation_title': 'How we work together',
     'cooperation_lead': 'Modern, efficient, and to your full satisfaction!',
+    'cooperation_steps_title': '5 steps to a successful collaboration',
 
     # --- Fees page ---
     'fees_title': 'Fees',
@@ -157,8 +158,12 @@ EN = {
     # --- Contact page: info list + form ---
     'contact_info_address': 'Address',
     'contact_info_hours': 'Opening hours',
-    'contact_info_hours_value': 'Monday–Friday 9am–6pm',
     'contact_info_databox': 'Data box',
+    'contact_address_value': '2 Chrudimská 1418, 130 00 Prague 3',
+    'contact_hours_value': 'Monday–Friday 9am–6pm',
+    'contact_email_value': 'vlajsek@lajseklegal.cz',
+    'contact_phone_value': '+420 723 506 568',
+    'contact_databox_value': '5yzxazh',
 
     # --- Language switcher ---
     'lang_switch_label': 'Language',

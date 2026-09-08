@@ -1,7 +1,6 @@
 import datetime as dt
 import json
 
-from django.conf import settings
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -13,10 +12,11 @@ from core.seo import ld_json
 
 from .emails import send_booking_confirmation, send_booking_notification
 from .forms import BookingForm, NewsletterForm
-from .models import FAQ, Booking
+from .models import FAQ, Booking, BookingSettings
 
 
 def available_slots():
+    booking_settings = BookingSettings.load()
     now = timezone.localtime()
     taken = set(
         Booking.objects.filter(
@@ -26,13 +26,13 @@ def available_slots():
     )
 
     days = []
-    for day_offset in range(settings.BOOKING_DAYS_AHEAD):
+    for day_offset in range(booking_settings.days_ahead):
         day = (now + dt.timedelta(days=day_offset)).date()
-        if day.weekday() not in settings.BOOKING_WEEKDAYS:
+        if day.weekday() not in booking_settings.weekdays:
             continue
 
         day_slots = []
-        for hour in settings.BOOKING_HOURS:
+        for hour in sorted(booking_settings.hours):
             slot_dt = timezone.make_aware(dt.datetime.combine(day, dt.time(hour=hour)))
             if slot_dt <= now:
                 continue
@@ -89,7 +89,6 @@ def booking(request):
         'form': form,
         'days': available_slots(),
         'slots_json': slots_by_date_json(),
-        'days_ahead': settings.BOOKING_DAYS_AHEAD,
     }
     return render(request, 'booking.html', context)
 

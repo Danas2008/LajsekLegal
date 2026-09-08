@@ -79,7 +79,7 @@
 }
 
 .dash-sidebar-footer {
-  margin-top: auto;
+  margin-top: 20px;
   padding-top: 20px;
   border-top: 1px solid #2a3342;
 }
@@ -179,6 +179,13 @@
   border-radius: 8px;
   color: var(--wine);
   font-size: 1.2rem;
+}
+
+.dash-tile-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
 }
 
 .dash-tile h3 {
@@ -319,6 +326,43 @@
 .dash-form-row textarea:focus {
   border-color: var(--wine);
   outline: none;
+}
+
+.pill-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pill-choice {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pill-choice input {
+  accent-color: var(--wine);
+}
+
+.pill-choice:has(input:checked) {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: #fff;
+}
+
+.pill-choices-hours .pill-choice {
+  padding: 8px 12px;
+  font-size: 0.8rem;
 }
 
 .dash-field-error {

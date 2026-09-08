@@ -15,6 +15,7 @@ urlpatterns = [
     path('schuzky/', views.booking_list, name='booking_list'),
     path('schuzky/<int:pk>/potvrdit/', views.booking_confirm, name='booking_confirm'),
     path('schuzky/<int:pk>/zrusit/', views.booking_cancel, name='booking_cancel'),
+    path('schuzky/nastaveni/', views.booking_settings, name='booking_settings'),
 
     path('formulare/', views.contact_list, name='contact_list'),
     path('formulare/<int:pk>/vyresit/', views.contact_resolve, name='contact_resolve'),

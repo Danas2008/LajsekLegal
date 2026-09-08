@@ -1,0 +1,46 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Nastavení termínů{% endblock %}
+
+{% block dash_content %}
+  <div class="dash-title">
+    <h1>Nastavení termínů</h1>
+    <a class="text-link" href="{% url 'dashboard:booking_list' %}">← Zpět na schůzky</a>
+  </div>
+
+  <div class="dash-card" style="max-width: 640px;">
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="dash-form-row">
+        <label>{{ form.weekdays.label }}</label>
+        <div class="pill-choices">
+          {% for checkbox in form.weekdays %}
+            <label class="pill-choice">{{ checkbox.tag }} {{ checkbox.choice_label }}</label>
+          {% endfor %}
+        </div>
+        {% if form.weekdays.errors %}<p class="dash-field-error">{{ form.weekdays.errors|join:', ' }}</p>{% endif %}
+      </div>
+
+      <div class="dash-form-row">
+        <label>{{ form.hours.label }}</label>
+        <div class="pill-choices pill-choices-hours">
+          {% for checkbox in form.hours %}
+            <label class="pill-choice">{{ checkbox.tag }} {{ checkbox.choice_label }}</label>
+          {% endfor %}
+        </div>
+        {% if form.hours.errors %}<p class="dash-field-error">{{ form.hours.errors|join:', ' }}</p>{% endif %}
+      </div>
+
+      <div class="dash-form-row" style="max-width:220px;">
+        <label for="{{ form.days_ahead.id_for_label }}">{{ form.days_ahead.label }}</label>
+        {{ form.days_ahead }}
+        {% if form.days_ahead.errors %}<p class="dash-field-error">{{ form.days_ahead.errors|join:', ' }}</p>{% endif %}
+      </div>
+
+      <div class="dash-form-actions">
+        <button class="button" type="submit">Uložit nastavení</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

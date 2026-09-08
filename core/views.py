@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 
+from blog.models import BlogPost
 from engagement.emails import send_new_review_notification
 from engagement.forms import ReviewForm
 from engagement.models import Review
@@ -22,7 +23,8 @@ def set_language(request, lang):
 
 
 def home(request):
-    return render(request, 'index.html')
+    context = {'recent_posts': BlogPost.objects.all()[:3]}
+    return render(request, 'index.html', context)
 
 
 def about(request):

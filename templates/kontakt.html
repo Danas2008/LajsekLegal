@@ -101,7 +101,7 @@
                 </span>
                 <div>
                   <strong>{% t "contact_info_address" "Adresa" %}</strong>
-                  <span>Chrudimská 1418/2, 130 00 Praha 3</span>
+                  <span>{% edit "contact_address_value" "Chrudimská 1418/2, 130 00 Praha 3" %}</span>
                 </div>
               </li>
               <li>
@@ -120,7 +120,7 @@
                 </span>
                 <div>
                   <strong>{% t "contact_info_hours" "Otevírací doba" %}</strong>
-                  <span>{% t "contact_info_hours_value" "Pondělí–pátek 9:00–18:00" %}</span>
+                  <span>{% edit "contact_hours_value" "Pondělí–pátek 9:00–18:00" %}</span>
                 </div>
               </li>
               <li>
@@ -140,7 +140,7 @@
                 <div>
                   <strong>{% t "footer_label_email" "E-mail" %}</strong>
                   <a href="mailto:vlajsek@lajseklegal.cz"
-                    >vlajsek@lajseklegal.cz</a
+                    >{% edit "contact_email_value" "vlajsek@lajseklegal.cz" %}</a
                   >
                 </div>
               </li>
@@ -160,7 +160,7 @@
                 </span>
                 <div>
                   <strong>{% t "footer_label_phone" "Telefon" %}</strong>
-                  <a href="tel:+420723506568">+420 723 506 568</a>
+                  <a href="tel:+420723506568">{% edit "contact_phone_value" "+420 723 506 568" %}</a>
                 </div>
               </li>
               <li>
@@ -179,7 +179,7 @@
                 </span>
                 <div>
                   <strong>{% t "contact_info_databox" "Datová schránka" %}</strong>
-                  <span>5yzxazh</span>
+                  <span>{% edit "contact_databox_value" "5yzxazh" %}</span>
                 </div>
               </li>
             </ul>

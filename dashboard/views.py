@@ -11,8 +11,8 @@ from django.views.decorators.http import require_POST
 
 from blog.models import BlogPost
 from core.models import ContactMessage, TextBlock
-from engagement.forms import FAQForm
-from engagement.models import FAQ, Booking, NewsletterSubscriber, Review
+from engagement.forms import BookingSettingsForm, FAQForm
+from engagement.models import FAQ, Booking, BookingSettings, NewsletterSubscriber, Review
 
 from .forms import BlogPostForm
 
@@ -146,6 +146,21 @@ def booking_cancel(request, pk):
     booking.save(update_fields=['status'])
     messages.success(request, 'Schůzka byla zrušena.')
     return redirect('dashboard:booking_list')
+
+
+@staff_member_required
+def booking_settings(request):
+    instance = BookingSettings.load()
+    if request.method == 'POST':
+        form = BookingSettingsForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Nastavení termínů bylo uloženo.')
+            return redirect('dashboard:booking_settings')
+    else:
+        form = BookingSettingsForm(instance=instance)
+
+    return render(request, 'dashboard/booking_settings.html', {'form': form})
 
 
 # --- Contact submissions --------------------------------------------------
