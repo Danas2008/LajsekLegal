@@ -192,15 +192,8 @@
           <div class="posts">
             {% for post in recent_posts %}
               <article class="post">
-                {% if post.cover_image %}
-                  <a class="post-thumb" href="{{ post.get_absolute_url }}" tabindex="-1" aria-hidden="true">
-                    <img src="{{ post.cover_image.url }}" alt="" loading="lazy">
-                  </a>
-                {% endif %}
-                <div class="post-body">
-                  <time datetime="{{ post.published_at|date:'Y-m-d' }}">{{ post.published_at|date:DATE_FMT }}</time>
-                  <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                </div>
+                <time datetime="{{ post.published_at|date:'Y-m-d' }}">{{ post.published_at|date:DATE_FMT }}</time>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
               </article>
             {% empty %}
               <p>{% t "blog_empty" "Zatím zde nejsou žádné články." %}</p>
