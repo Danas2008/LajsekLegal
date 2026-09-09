@@ -946,7 +946,6 @@ blockquote footer span {
 
 .bio .image-slot {
   margin-bottom: 39px;
-  min-height: 420px;
 }
 
 .bio .image-slot img {
@@ -1374,6 +1373,7 @@ blockquote footer span {
     position: sticky;
     top: 105px;
     margin-bottom: 0;
+    min-height: 620px;
   }
 
   .map-embed {
