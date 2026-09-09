@@ -946,6 +946,11 @@ blockquote footer span {
 
 .bio .image-slot {
   margin-bottom: 39px;
+  min-height: 420px;
+}
+
+.bio .image-slot img {
+  object-position: 50% 12%;
 }
 
 .fact,
