@@ -23,7 +23,7 @@ def blog_detail(request, slug):
         'headline': post.title,
         'description': (post.excerpt or strip_tags(post.body))[:155],
         'datePublished': post.published_at.isoformat(),
-        'image': request.build_absolute_uri(static('img/obrazek1.jpg')),
+        'image': request.build_absolute_uri(static('img/homepage.webp')),
         'author': {'@type': 'Person', 'name': 'Vladimír Lajsek'},
         'publisher': {
             '@type': 'Organization',

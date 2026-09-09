@@ -13,7 +13,7 @@
     <meta property="og:locale" content="{% if LANG == 'en' %}en_US{% else %}cs_CZ{% endif %}" />
     <meta property="og:title" content="{% t 'meta_title_about' 'O advokátovi Vladimíru Lajskovi | Lajsek Legal Praha' %}" />
     <meta property="og:description" content="{% t 'meta_desc_about' 'Vladimír Lajsek, advokát a mediátor v Praze s bohatou praxí v justici i renomovaných kancelářích. Zjistěte více o jeho zkušenostech a vzdělání.' %}" />
-    <meta property="og:image" content="{{ SITE_URL }}{% static 'img/obrazek1.jpg' %}" />
+    <meta property="og:image" content="{{ SITE_URL }}{% static 'img/homepage.webp' %}" />
     <meta property="og:url" content="{{ CANONICAL_URL }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{% t 'meta_title_about' 'O advokátovi Vladimíru Lajskovi | Lajsek Legal Praha' %}" />
@@ -72,7 +72,7 @@
       <section class="content">
         <div class="wrap bio">
           <div class="image-slot">
-            <img src="{% static 'img/obrazek1.jpg' %}" alt="Vladimír Lajsek, advokát a mediátor v Praze" loading="lazy" />
+            <img src="{% static 'img/homepage.webp' %}" alt="Vladimír Lajsek, advokát a mediátor v Praze" loading="lazy" />
           </div>
           <article class="reading">
           {% editblock "about_bio_content" %}
